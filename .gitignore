@@ -1,1 +1,12 @@
-node_modules
+# ignore generated files
+node_modules/*
+dist/*
+build/*
+.DS_Store
+Desktop.ini
+.Spotlight-V100
+.Trashes
+._*
+Thumbs.db
+.vscode
+.cache
