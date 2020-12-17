@@ -1,26 +1,56 @@
-/* eslint-disable import/no-named-as-default */
-/* eslint linebreak-style: ["error", "windows"] */
 import './sass/main.scss';
-// eslint-disable-next-line import/no-named-as-default-member
-import Elements from './lib/Elements';
+import App from './App';
+import { HomeComponent, ProductComponent, ProductsComponent } from './components';
 
-const appContainer = document.getElementById('appContainer');
-const header = Elements.createHeader({
-  textContent: 'Checkt da vinneke ...',
-});
+const initApp = () => {
+  const appContainer = document.getElementById('appContainer');
 
-const button = Elements.createButton({
-  textContent: 'Ahzo ken klet peeken!',
-  onClick: () => {
-    appContainer.appendChild(header);
-  },
-});
+  const app = new App(appContainer);
+  app.addComponent(new HomeComponent());
+  app.addComponent(new ProductsComponent());
+  app.addComponent(new ProductComponent());
+  //  DIT HOEFT NIET WANT DE ROUTER WEET DAT OP MIJN ROOT THE HOME COMPONENT MOE GAAN
+  // app.showComponent({
+  //   name: 'home',
+  // });
 
-const link = Elements.createLink({
-  href: 'https://www.youtube.com/watch?v=GMZWRP1K7WU',
-  textContent: 'pureGoldContent !',
-  target: '_blank',
-});
+  // Router.getRouter().on('/test', () => {
+  //   console.log('testing...');
+  // }).resolve();
+};
 
-appContainer.appendChild(link);
-appContainer.appendChild(button);
+window.addEventListener('load', initApp);
+
+// const header = Elements.createHeader({
+//   textContent: 'Checkt da vinneke ...',
+// });
+
+// const button = Elements.createButton({
+//   textContent: 'Ahzo ken klet peeken!',
+//   onClick: () => {
+//     appContainer.appendChild(header);
+//   },
+// });
+
+// const link = Elements.createLink({
+//   href: 'https://www.youtube.com/watch?v=GMZWRP1K7WU',
+//   textContent: 'pureGoldContent !',
+//   target: '_blank',
+// });
+
+// const listData = [
+//   {
+//     textContent: 'julienke',
+//   },
+//   {
+//     textContent: 'pizzaaaaa',
+//   },
+// ];
+
+// const list = Elements.createList({
+//   items: listData,
+// });
+
+// appContainer.appendChild(list);
+// appContainer.appendChild(link);
+// appContainer.appendChild(button);

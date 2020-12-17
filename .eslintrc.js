@@ -12,5 +12,6 @@ module.exports = {
   },
   rules: {
     'no-console': 1,
+    'no-param-reassign': 0,
   },
 };

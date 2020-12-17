@@ -3,12 +3,12 @@
  *
  * */
 
-/* eslint linebreak-style: ["error", "windows"] */
+import '../sass/main.scss';
+
 const Elements = {
   createButton({ textContent = '', onClick = null }) {
     const button = document.createElement('button');
     button.textContent = textContent;
-    // eslint-disable-next-line no-undef
     if (onClick)button.addEventListener('click', () => { onClick(); });
     return button;
   },
@@ -30,18 +30,21 @@ const Elements = {
     return a;
   },
 
-  // WIP
-  // createList({ items = [], ordered = false }) {
-  //   const list = document.createElement(ordered ? 'ol' : 'ul');
-  //   items.forEach(({ textContent, href }) => {
-  //     const li = document.createElement('li');
-  //     if (!href) li.textContent = textContent;
-  //     else {
-  //       li.appendChild(Elements.createLink({
-  //       })
-  //     }
-  //   });
-  // },
+  createList({ items = [], ordered = false }) {
+    const list = document.createElement(ordered ? 'ol' : 'ul');
+    items.forEach(({ textContent, href }) => {
+      const li = document.createElement('li');
+      if (!href) li.textContent = textContent;
+      else {
+        li.appendChild(Elements.createLink({
+          textContent,
+          href,
+        }));
+      }
+      list.appendChild(li);
+    });
+    return list;
+  },
 };
 
 export default Elements;
