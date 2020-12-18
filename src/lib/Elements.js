@@ -6,12 +6,39 @@
 import '../sass/main.scss';
 
 const Elements = {
+  generateInput(attributes) {
+    const input = document.createElement('input');
+    Object.keys(attributes).forEach((attrib) => {
+      input.setAttribute(attrib, attributes[attrib]);
+    });
+    return input;
+  },
+
+  /* createInputEmail() {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('placeholder', 'E-mail');
+    return input;
+  },
+  createInputPsw() {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('placeholder', 'Password');
+    return input;
+  }, */
+
+  createForm() {
+    const form = document.createElement('form');
+    return form;
+  },
+
   createButton({ textContent = '', onClick = null }) {
     const button = document.createElement('button');
     button.textContent = textContent;
-    if (onClick)button.addEventListener('click', () => { onClick(); });
+    if (onClick)button.addEventListener('click', (event) => { onClick(event); });
     return button;
   },
+
   createHeader({
     size = 1,
     textContent = '',

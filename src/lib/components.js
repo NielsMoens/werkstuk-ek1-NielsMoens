@@ -1,3 +1,5 @@
+import Router from '../Router';
+
 /**
  * The compent parent
  */
@@ -10,6 +12,7 @@ class Component {
     this.model = this.proxyModel(model);
     this.routerPath = routerPath;
     this.reRender = null;
+    this.router = Router.getRouter();
   }
 
   proxyModel(model) {
@@ -26,23 +29,6 @@ class Component {
       },
     });
   }
-
-  // render() {
-  //   const { counter } = this.model;
-
-  //   // create a home container
-  //   const homeContainer = document.createElement('div');
-
-  //   // append header
-  //   homeContainer.appendChild(
-  //     Elements.createHeader({
-  //       textContent: `Current value is: ${counter}`,
-  //     }),
-  //   );
-
-  //   //  return the home container
-  //   return homeContainer;
-  // }
 }
 
 export default Component;

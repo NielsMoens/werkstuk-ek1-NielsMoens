@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import './sass/main.scss';
 import App from './App';
 import { HomeComponent, ProductComponent, ProductsComponent } from './components';
@@ -9,14 +10,6 @@ const initApp = () => {
   app.addComponent(new HomeComponent());
   app.addComponent(new ProductsComponent());
   app.addComponent(new ProductComponent());
-  //  DIT HOEFT NIET WANT DE ROUTER WEET DAT OP MIJN ROOT THE HOME COMPONENT MOE GAAN
-  // app.showComponent({
-  //   name: 'home',
-  // });
-
-  // Router.getRouter().on('/test', () => {
-  //   console.log('testing...');
-  // }).resolve();
 };
 
 window.addEventListener('load', initApp);

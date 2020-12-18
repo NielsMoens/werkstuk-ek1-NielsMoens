@@ -6,7 +6,7 @@ import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import Router from '../Router';
 
-class ProductsComponent extends Component {
+class UserDashComponent extends Component {
   constructor() {
     super({
       name: 'products',
@@ -14,20 +14,28 @@ class ProductsComponent extends Component {
         products: [
           {
             id: 1,
-            productName: 'Mijn eerste product',
+            productName: 'Edit User Info',
           },
           {
             id: 2,
-            productName: 'Mijn tweede product',
+            productName: 'Registered',
           },
           {
             id: 3,
-            productName: 'Mijn derde product',
+            productName: 'Check-out',
+          },
+          {
+            id: 4,
+            productName: 'History',
+          },
+          {
+            id: 5,
+            productName: 'Edit User Info',
           },
 
         ],
       },
-      routerPath: '/products',
+      routerPath: '/dashboard',
     });
   }
 
@@ -59,4 +67,4 @@ class ProductsComponent extends Component {
   }
 }
 
-export default ProductsComponent;
+export default UserDashComponent;
