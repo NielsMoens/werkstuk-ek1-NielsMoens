@@ -2,6 +2,8 @@
  * My Home Components
  */
 
+import 'regenerator-runtime/runtime';
+import firebase from 'firebase/app';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import Authentication from '../lib/Authentication';
@@ -88,8 +90,19 @@ class HomeComponent extends Component {
       }),
     );
 
-    form.appendChild(
-      Elements.createGooglesignin(),
+    div.appendChild(
+      Elements.createButton({
+        textContent: 'Sign In With Google Account',
+        onClick: async () => {
+          const provider = new firebase.auth.GoogleAuthProvider();
+          const response = await firebase.auth().signInWithPopup(provider);
+          if (!response) {
+            // @TODO Show error
+            return;
+          }
+          this.router.navigate('/products/');
+        },
+      }),
     );
 
     // return the home container

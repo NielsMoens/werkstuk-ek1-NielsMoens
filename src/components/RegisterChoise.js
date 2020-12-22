@@ -6,7 +6,7 @@ import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import Router from '../Router';
 
-class UserDashComponent extends Component {
+class ProductsComponent extends Component {
   constructor() {
     super({
       name: 'products',
@@ -14,36 +14,28 @@ class UserDashComponent extends Component {
         products: [
           {
             id: 1,
-            productName: 'Edit User Info',
+            productName: 'Visitor',
           },
           {
             id: 2,
-            productName: 'Registered',
-          },
-          {
-            id: 3,
-            productName: 'Check-out',
-          },
-          {
-            id: 4,
-            productName: 'History',
-          },
-          {
-            id: 5,
-            productName: 'Edit User Info',
+            productName: 'Bussiness',
           },
 
         ],
       },
-      routerPath: '/dashboard',
+      routerPath: '/products',
     });
   }
 
   render() {
     const { products } = this.model;
-
     //  create a home container
     const productsContainer = document.createElement('div');
+    productsContainer.appendChild(
+      Elements.createHeader({
+        textContent: 'HORECONA',
+      }),
+    );
 
     const mappedProducts = this.model.products.map((product) => ({
       ...product,
@@ -67,4 +59,4 @@ class UserDashComponent extends Component {
   }
 }
 
-export default UserDashComponent;
+export default ProductsComponent;

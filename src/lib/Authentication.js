@@ -16,17 +16,6 @@ export default class Authentication {
     return null;
   }
 
-  static async loginWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    try {
-      const data = await firebase.auth().signInWithPopup(provider);
-      return data;
-    } catch (e) {
-      console.log(e);
-    }
-    return null;
-  }
-
   async register() {
     const { email, password } = this.userData;
     try {

@@ -1,9 +1,11 @@
 import 'regenerator-runtime/runtime';
 import './sass/main.scss';
 import App from './App';
+import initFirebase from './lib/Firebase';
 import { HomeComponent, ProductComponent, ProductsComponent } from './components';
 
 const initApp = () => {
+  initFirebase();
   const appContainer = document.getElementById('appContainer');
 
   const app = new App(appContainer);

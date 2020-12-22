@@ -4,13 +4,13 @@
 
 import Component from './lib/components';
 import Router from './Router';
-import initFirebase from './lib/Firebase';
+// import initFirebase from './lib/Firebase';
 
 class App {
   constructor(parent) {
     this.parent = parent;
     this.components = [];
-    initFirebase();
+    // initFirebase();
   }
 
   // kill off the unnessesary childern

@@ -398,5 +398,21 @@ body {
   background-color: #404040;
   color: #404040;
 }
+body h1 {
+  color: white;
+}
+body #appContainer {
+  padding-bottom: 40px;
+  background-color: #404040;
+}
+body #appContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #404040;
+}
+body #appContainer form h1 {
+  color: white;
+}
 
 /*# sourceMappingURL=main.css.map */

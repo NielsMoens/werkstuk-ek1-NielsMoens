@@ -18,16 +18,28 @@ const data = [
     id: 3,
     productName: 'Mijn derde product',
   },
-
 ];
 class ProductComponent extends Component {
   constructor() {
     super({
       name: 'product',
       model: {
-        product: null,
+        product: [
+          {
+            id: 1,
+            productName: 'Mijn eerste product',
+          },
+          {
+            id: 2,
+            productName: 'Mijn tweede product',
+          },
+          {
+            id: 3,
+            productName: 'Mijn derde product',
+          },
+        ],
       },
-      routerPath: '/product/:id',
+      routerPath: '/product/id:',
     });
     this.productLoaded = false;
   }
@@ -35,13 +47,14 @@ class ProductComponent extends Component {
   loadProduct() {
     if (!this.productLoaded) {
       this.productLoaded = true;
-      // eslint-disable-next-line radix
       this.model.product = data.find((p) => p.id === parseInt(this.props.id));
     }
   }
 
   render() {
-    const { product } = this.model;
+    const {
+      product,
+    } = this.model;
 
     //  create a product container
     const productContainer = document.createElement('div');

@@ -5,13 +5,13 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-const Products = {
+const Users = {
   getAll: async () => {
     //  get firestore
     const db = firebase.firestore();
 
     //  define the query
-    const query = db.collection('products');
+    const query = db.collection('users');
 
     // get the query snapshot
     const querySnapshot = await query.get();
@@ -24,4 +24,4 @@ const Products = {
   },
 };
 
-export default Products;
+export default Users;
