@@ -1,0 +1,26 @@
+//
+// The Mixins
+//
+
+@mixin background($imgpath, $pos:0 0, $repeat: no-repeat) {
+   background: {
+      image: url($imgpath);
+      position: $pos;
+      repeat: $repeat;
+      max-width: 100%;
+      max-height: 100%;
+   }
+}
+
+// Grid system
+// Kudos to "The Net Ninja" great sass grid tutorial >.<
+@mixin grid($cols, $margin) {
+   float: left;
+   margin-right: $margin;
+   margin-bottom: $margin;
+   width: ((100% -(($cols - 1) * $margin)) / $cols);
+
+   &:nth-child(#{$cols}n) {
+      margin-right: 0;
+   }
+}

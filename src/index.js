@@ -13,37 +13,3 @@ const initApp = () => {
 };
 
 window.addEventListener('load', initApp);
-
-// const header = Elements.createHeader({
-//   textContent: 'Checkt da vinneke ...',
-// });
-
-// const button = Elements.createButton({
-//   textContent: 'Ahzo ken klet peeken!',
-//   onClick: () => {
-//     appContainer.appendChild(header);
-//   },
-// });
-
-// const link = Elements.createLink({
-//   href: 'https://www.youtube.com/watch?v=GMZWRP1K7WU',
-//   textContent: 'pureGoldContent !',
-//   target: '_blank',
-// });
-
-// const listData = [
-//   {
-//     textContent: 'julienke',
-//   },
-//   {
-//     textContent: 'pizzaaaaa',
-//   },
-// ];
-
-// const list = Elements.createList({
-//   items: listData,
-// });
-
-// appContainer.appendChild(list);
-// appContainer.appendChild(link);
-// appContainer.appendChild(button);

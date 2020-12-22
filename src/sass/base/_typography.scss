@@ -1,0 +1,10 @@
+//
+// Typography
+//
+
+@use '../abstracts/variables' as vars;
+@use 'sass:map';
+
+body {
+  font-family: vars.$text-font;
+}

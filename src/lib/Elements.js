@@ -14,22 +14,13 @@ const Elements = {
     return input;
   },
 
-  /* createInputEmail() {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'text');
-    input.setAttribute('placeholder', 'E-mail');
-    return input;
-  },
-  createInputPsw() {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'text');
-    input.setAttribute('placeholder', 'Password');
-    return input;
-  }, */
-
   createForm() {
     const form = document.createElement('form');
     return form;
+  },
+  createDiv() {
+    const div = document.createElement('div');
+    return div;
   },
 
   createButton({ textContent = '', onClick = null }) {
@@ -37,6 +28,12 @@ const Elements = {
     button.textContent = textContent;
     if (onClick)button.addEventListener('click', (event) => { onClick(event); });
     return button;
+  },
+  createGooglesignin() {
+    const img = document.createElement('img');
+    img.src = 'src/assets/btn_google_signin_light_pressed_web.png';
+    // if (onClick)img.addEventListener('click', (event) => { onClick(event); });
+    return img;
   },
 
   createHeader({

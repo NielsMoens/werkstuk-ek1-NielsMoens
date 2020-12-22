@@ -1,0 +1,29 @@
+//
+// Helpers
+//
+@use '../abstracts/mixins'as mix;
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.uppercase{
+    text-transform: uppercase;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.col-4 {
+    @include mix.grid(4, 1.25%);
+}
+
+.col-3 {
+    @include mix.grid(3, 1.25%);
+}
+
+.col-5 {
+    @include mix.grid(5, 2%);
+}
+

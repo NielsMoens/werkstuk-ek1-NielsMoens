@@ -1,0 +1,23 @@
+//
+// The Variables
+//
+@use '../abstracts/functions'as func;
+
+//  colors for the login screen 
+$mainLogin-colors:(
+  backgroundColor:#404040,
+  formbackgroundColor: #404040,
+  headColor: white,
+  btnloginColor:#474C51,
+  formText: #707070,
+  mainTextColor: white,
+  );
+
+$text-font: 'Open Sans',
+sans-serif;
+$logo-font: 'Lobster',
+cursive;
+
+$small-width: 400px;
+$medium-width: 600px;
+$large-width: 1200px;

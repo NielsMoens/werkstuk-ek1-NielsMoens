@@ -45,18 +45,20 @@ class HomeComponent extends Component {
       }),
     );
 
+    const div = document.createElement('div');
+    div.className = 'btn';
+    form.appendChild(div);
+
     //  append a button
-    form.appendChild(
+    div.appendChild(
       Elements.createButton({
         textContent: 'login',
         onClick: async (event) => {
           event.preventDefault();
-
           const formData = new FormData(document.querySelector('form'));
           const email = formData.get('email');
           const password = formData.get('password');
           const auth = new Authentication({ email, password });
-
           const response = await auth.login(email, password);
           if (!response) {
             // @TODO Show error
@@ -67,17 +69,15 @@ class HomeComponent extends Component {
       }),
     );
 
-    form.appendChild(
+    div.appendChild(
       Elements.createButton({
         textContent: 'register',
         onClick: async (event) => {
           event.preventDefault();
-
           const formData = new FormData(document.querySelector('form'));
           const email = formData.get('email');
           const password = formData.get('password');
           const auth = new Authentication({ email, password });
-
           const response = await auth.register(email, password);
           if (!response) {
             // @TODO Show error
@@ -86,6 +86,10 @@ class HomeComponent extends Component {
           this.router.navigate('/products/');
         },
       }),
+    );
+
+    form.appendChild(
+      Elements.createGooglesignin(),
     );
 
     // return the home container

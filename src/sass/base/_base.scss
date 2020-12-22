@@ -1,0 +1,15 @@
+//
+// Base
+//
+
+@use '../abstracts/variables'as vars;
+@use 'sass:map';
+
+a {
+  text-decoration: none;
+}
+
+body{
+  background-color: white;
+}
+
