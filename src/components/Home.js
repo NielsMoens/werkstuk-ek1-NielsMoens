@@ -12,9 +12,7 @@ class HomeComponent extends Component {
   constructor() {
     super({
       name: 'home',
-      model: {
-
-      },
+      model: {},
       routerPath: '/',
     });
   }
@@ -76,25 +74,6 @@ class HomeComponent extends Component {
     div.appendChild(
       Elements.createButton({
         textContent: 'register',
-        onClick: async (event) => {
-          event.preventDefault();
-          const formData = new FormData(document.querySelector('form'));
-          const email = formData.get('email');
-          const password = formData.get('password');
-          const auth = new Authentication({ email, password });
-          const response = await auth.register(email, password);
-          if (!response) {
-            // @TODO Show error
-            return;
-          }
-          this.router.navigate('/products/');
-        },
-      }),
-    );
-
-    div.appendChild(
-      Elements.createButton({
-        textContent: 'register',
         onClick: (event) => {
           event.preventDefault();
           this.router.navigate('/registerPage/');
@@ -110,6 +89,7 @@ class HomeComponent extends Component {
           const response = await firebase.auth().signInWithPopup(provider);
           if (!response) {
             // @TODO Show error
+            console.log("aiiiii, gene response");
             return;
           }
           this.router.navigate('/products/');

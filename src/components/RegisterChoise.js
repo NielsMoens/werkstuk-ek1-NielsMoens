@@ -6,26 +6,14 @@ import 'regenerator-runtime/runtime';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import Authentication from '../lib/Authentication';
-import Router from '../Router';
 import User from '../lib/UserRegisterData';
-
 
 class RegisterComponent extends Component {
   constructor() {
     super({
       name: 'register',
       model: {
-        Users: [
-          {
-            id: 1,
-            registerChoise: 'Visitor',
-          },
-          {
-            id: 2,
-            registerChoise: 'Bussiness',
-          },
-        ],
-      },
+             },
       routerPath: '/registerPage',
     });
   }
@@ -90,8 +78,9 @@ class RegisterComponent extends Component {
     radioParent.appendChild(business);
 
     registerContainer.appendChild(radioParent);
-    // return the home container
     
+    
+    // create & append button -> store all the data in firestore
     registerContainer.appendChild(
       Elements.createButton({
         textContent: 'register',
@@ -108,19 +97,21 @@ class RegisterComponent extends Component {
             // @TODO Show error
             return;
           }
+          window.localStorage.setItem('uid', response.user.uid);
           const user = new User('userdata', response.user.uid);
           console.log(user.doc)
           const data = await user.savedata({
             email, registerChoice
           })
           console.log(data);
-         
-          this.router.navigate('/products/');
+          
+          this.router.navigate('/registerPage/extraInfo/');
         },
       }),
     );
-
-    return registerContainer;
+      
+      // return the home container
+      return registerContainer;
     
   }
 }

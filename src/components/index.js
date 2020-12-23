@@ -4,6 +4,6 @@
 
 import HomeComponent from './Home';
 import RegisterComponent from './RegisterChoise';
-import ProductComponent from './visitor';
+import ExtraData from './ExtraData';
 
-export { HomeComponent, RegisterComponent, ProductComponent };
+export { HomeComponent, RegisterComponent, ExtraData };
