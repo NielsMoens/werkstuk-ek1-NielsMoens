@@ -2,61 +2,127 @@
  * My Products Components
  */
 
+import 'regenerator-runtime/runtime';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
+import Authentication from '../lib/Authentication';
 import Router from '../Router';
+import User from '../lib/UserRegisterData';
 
-class ProductsComponent extends Component {
+
+class RegisterComponent extends Component {
   constructor() {
     super({
-      name: 'products',
+      name: 'register',
       model: {
-        products: [
+        Users: [
           {
             id: 1,
-            productName: 'Visitor',
+            registerChoise: 'Visitor',
           },
           {
             id: 2,
-            productName: 'Bussiness',
+            registerChoise: 'Bussiness',
           },
-
         ],
       },
-      routerPath: '/products',
+      routerPath: '/registerPage',
     });
   }
 
   render() {
-    const { products } = this.model;
     //  create a home container
-    const productsContainer = document.createElement('div');
-    productsContainer.appendChild(
+    const registerContainer = document.createElement('form');
+    registerContainer.setAttribute('method', 'POST');
+    registerContainer.appendChild(
       Elements.createHeader({
         textContent: 'HORECONA',
       }),
     );
+    
+    //  append form email
+    registerContainer.appendChild(
+      Elements.generateInput({
+        name: 'email', id: 'email', placeholder: 'email', type: 'text',
+      }),
+    );
+    
+    // append form email
+    registerContainer.appendChild(
+      Elements.generateInput({
+        // NAME IS IMPORTANT
+        name: 'password', id: 'password', placeholder: 'password', type: 'password',
+      }),
+    );
+    
+    // create radio buttons for user choice
+    const radioParent = document.createElement('section');
+    const visitor = document.createElement('div');
+    const business = document.createElement('div');
 
-    const mappedProducts = this.model.products.map((product) => ({
-      ...product,
-      textContent: product.productName,
+    // append radio button visitor
+    visitor.appendChild(
+      Elements.generateInput({
+        name: 'choice', id: 'visitor', type: 'radio', placeholder: 'visitor', value: 'visitor',
+      }),
+    );
 
-      href: `${Router.getRouter().link('/product')}/${product.id}`,
-    }));
+    // append radio button business
+    business.appendChild(
+      Elements.generateInput({
+        name: 'choice', id: 'business', type: 'radio', placeholder: 'business', value: 'business',
+      }),
+    );
+    
+    // create label for radio buttons 
+    const label_b =  document.createElement('label');
+    label_b.innerHTML = 'Business';
+    label_b.setAttribute('for', 'business');
+    business.appendChild(label_b);
 
-    // append products list
-    if (products.length === 0) {
-      productsContainer.innerHTML = 'No products Availeble';
-    } else {
-      productsContainer.appendChild(
-        Elements.createList({
-          items: mappedProducts,
-        }),
-      );
-    }
+    const label_v =  document.createElement('label');
+    label_v.innerHTML = 'visitor';
+    label_v.setAttribute('for', 'visitor');
+    visitor.appendChild(label_v);
+
+    // append radiobuttons label to parent 
+    radioParent.appendChild(visitor);
+    radioParent.appendChild(business);
+
+    registerContainer.appendChild(radioParent);
     // return the home container
-    return productsContainer;
+    
+    registerContainer.appendChild(
+      Elements.createButton({
+        textContent: 'register',
+        onClick: async (event) => {
+          event.preventDefault();
+          const formData = new FormData(document.querySelector('form'));
+          const email = formData.get('email');
+          const password = formData.get('password');
+          const registerChoice = formData.get('choice');
+          const auth = new Authentication({ email, password });
+          const response = await auth.register(email, password);
+          console.log(response)
+          if (!response) {
+            // @TODO Show error
+            return;
+          }
+          const user = new User('userdata', response.user.uid);
+          console.log(user.doc)
+          const data = await user.savedata({
+            email, registerChoice
+          })
+          console.log(data);
+         
+          this.router.navigate('/products/');
+        },
+      }),
+    );
+
+    return registerContainer;
+    
   }
 }
 
-export default ProductsComponent;
+export default RegisterComponent;

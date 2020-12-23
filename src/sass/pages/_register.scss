@@ -7,3 +7,6 @@
 @use '../abstracts/mixins'as mix;
 @use '../abstracts/mediamixins'as media;
 
+label {
+    color: map-get($map: vars.$mainLogin-colors, $key: mainTextColor);
+ }

@@ -21,11 +21,6 @@ class Component {
         obj[prop] = value;
         if (this.reRender) this.reRender();
         return true;
-        /*
-         *  ^^ The set method should return a boolean value.
-         *  Return true to indicate that assignment succeeded.
-         *  if not you get a type error
-         */
       },
     });
   }

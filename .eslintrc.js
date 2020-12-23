@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     'no-console': 1,
     'no-param-reassign': 0,
+    'indent-size': [true, 4],
   },
 };

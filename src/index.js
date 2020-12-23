@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import './sass/main.scss';
 import App from './App';
 import initFirebase from './lib/Firebase';
-import { HomeComponent, ProductComponent, ProductsComponent } from './components';
+import { HomeComponent, ProductComponent, RegisterComponent } from './components';
 
 const initApp = () => {
   initFirebase();
@@ -10,7 +10,7 @@ const initApp = () => {
 
   const app = new App(appContainer);
   app.addComponent(new HomeComponent());
-  app.addComponent(new ProductsComponent());
+  app.addComponent(new RegisterComponent());
   app.addComponent(new ProductComponent());
 };
 

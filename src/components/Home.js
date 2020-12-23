@@ -34,12 +34,14 @@ class HomeComponent extends Component {
         textContent: 'HORECONA',
       }),
     );
+
     //  append from header
     form.appendChild(
       Elements.generateInput({
         name: 'email', id: 'email', placeholder: 'email', type: 'text',
       }),
     );
+
     form.appendChild(
       Elements.generateInput({
         // NAME IS IMPORTANT
@@ -86,6 +88,16 @@ class HomeComponent extends Component {
             return;
           }
           this.router.navigate('/products/');
+        },
+      }),
+    );
+
+    div.appendChild(
+      Elements.createButton({
+        textContent: 'register',
+        onClick: (event) => {
+          event.preventDefault();
+          this.router.navigate('/registerPage/');
         },
       }),
     );

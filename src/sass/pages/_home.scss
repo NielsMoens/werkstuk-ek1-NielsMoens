@@ -7,26 +7,30 @@
 @use '../abstracts/mixins'as mix;
 @use '../abstracts/mediamixins'as media;
 
-body{
-   background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor); ;
+body {
+   background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+   ;
    color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
 
-   h1{
+   h1 {
       color: white;
    }
-   #appContainer{
+
+   #appContainer {
       padding-bottom: 40px;
       background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
-      form{
+
+      form {
          display: flex;
          flex-direction: column;
          align-items: center;
          background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
-         h1{
+
+         h1 {
             color: map-get($map: vars.$mainLogin-colors, $key: headColor);
          }
       }
    }
+
+   
 }
-
-

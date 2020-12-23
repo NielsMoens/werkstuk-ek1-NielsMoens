@@ -3,7 +3,7 @@
  */
 
 import HomeComponent from './Home';
-import ProductsComponent from './RegisterChoise';
-import ProductComponent from './product';
+import RegisterComponent from './RegisterChoise';
+import ProductComponent from './visitor';
 
-export { HomeComponent, ProductsComponent, ProductComponent };
+export { HomeComponent, RegisterComponent, ProductComponent };
