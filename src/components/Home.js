@@ -89,7 +89,7 @@ class HomeComponent extends Component {
           const response = await firebase.auth().signInWithPopup(provider);
           if (!response) {
             // @TODO Show error
-            console.log("aiiiii, gene response");
+            console.log('aiiiii, gene response');
             return;
           }
           this.router.navigate('/products/');

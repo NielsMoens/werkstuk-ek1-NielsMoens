@@ -33,20 +33,20 @@ class App {
     this.components.push(component);
 
     //  add to router
-    Router.getRouter().on(routerPath, (props) => {
-      this.showComponent({
+    Router.getRouter().on(routerPath, async (props) => {
+      await this.showComponent({
         props,
         name,
       });
     }).resolve();
   }
 
-  showComponent({ name, props }) {
+  async showComponent({ name, props }) {
     const foundComponent = this.components.find((component) => component.name === name);
     if (!foundComponent) return;
     this.clearParent();
     if (props) foundComponent.props = props;
-    this.parent.appendChild(foundComponent.render());
+    this.parent.appendChild(await foundComponent.render());
   }
 }
 

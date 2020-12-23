@@ -6,14 +6,13 @@ import 'regenerator-runtime/runtime';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import Authentication from '../lib/Authentication';
-import User from '../lib/UserRegisterData';
+import DataBaseManager from '../lib/DatabaseManager';
 
 class RegisterComponent extends Component {
   constructor() {
     super({
       name: 'register',
-      model: {
-             },
+      model: {},
       routerPath: '/registerPage',
     });
   }
@@ -27,22 +26,28 @@ class RegisterComponent extends Component {
         textContent: 'HORECONA',
       }),
     );
-    
+
     //  append form email
     registerContainer.appendChild(
       Elements.generateInput({
-        name: 'email', id: 'email', placeholder: 'email', type: 'text',
+        name: 'email',
+        id: 'email',
+        placeholder: 'email',
+        type: 'text',
       }),
     );
-    
+
     // append form email
     registerContainer.appendChild(
       Elements.generateInput({
         // NAME IS IMPORTANT
-        name: 'password', id: 'password', placeholder: 'password', type: 'password',
+        name: 'password',
+        id: 'password',
+        placeholder: 'password',
+        type: 'password',
       }),
     );
-    
+
     // create radio buttons for user choice
     const radioParent = document.createElement('section');
     const visitor = document.createElement('div');
@@ -51,35 +56,42 @@ class RegisterComponent extends Component {
     // append radio button visitor
     visitor.appendChild(
       Elements.generateInput({
-        name: 'choice', id: 'visitor', type: 'radio', placeholder: 'visitor', value: 'visitor',
+        name: 'choice',
+        id: 'visitor',
+        type: 'radio',
+        placeholder: 'visitor',
+        value: 'visitor',
       }),
     );
 
     // append radio button business
     business.appendChild(
       Elements.generateInput({
-        name: 'choice', id: 'business', type: 'radio', placeholder: 'business', value: 'business',
+        name: 'choice',
+        id: 'business',
+        type: 'radio',
+        placeholder: 'business',
+        value: 'business',
       }),
     );
-    
-    // create label for radio buttons 
-    const label_b =  document.createElement('label');
-    label_b.innerHTML = 'Business';
-    label_b.setAttribute('for', 'business');
-    business.appendChild(label_b);
 
-    const label_v =  document.createElement('label');
-    label_v.innerHTML = 'visitor';
-    label_v.setAttribute('for', 'visitor');
-    visitor.appendChild(label_v);
+    // create label for radio buttons
+    const labelB = document.createElement('label');
+    labelB.innerHTML = 'Business';
+    labelB.setAttribute('for', 'business');
+    business.appendChild(labelB);
 
-    // append radiobuttons label to parent 
+    const labelV = document.createElement('label');
+    labelV.innerHTML = 'visitor';
+    labelV.setAttribute('for', 'visitor');
+    visitor.appendChild(labelV);
+
+    // append radiobuttons label to parent
     radioParent.appendChild(visitor);
     radioParent.appendChild(business);
 
     registerContainer.appendChild(radioParent);
-    
-    
+
     // create & append button -> store all the data in firestore
     registerContainer.appendChild(
       Elements.createButton({
@@ -90,29 +102,35 @@ class RegisterComponent extends Component {
           const email = formData.get('email');
           const password = formData.get('password');
           const registerChoice = formData.get('choice');
-          const auth = new Authentication({ email, password });
+          const auth = new Authentication({
+            email,
+            password,
+          });
           const response = await auth.register(email, password);
-          console.log(response)
+          console.log(response);
           if (!response) {
             // @TODO Show error
             return;
           }
-          window.localStorage.setItem('uid', response.user.uid);
-          const user = new User('userdata', response.user.uid);
-          console.log(user.doc)
-          const data = await user.savedata({
-            email, registerChoice
-          })
-          console.log(data);
-          
+          // first initialize uid in localstorage for future reference
+          const userUid = response.user.uid;
+          window.localStorage.setItem('uid', userUid);
+
+          // Then save the data from that page in the database,
+          // based on the uid (primary key) of the user as index
+          const user = new DataBaseManager('userdata', userUid);
+          await user.savedata({
+            email,
+            registerChoice,
+          });
+
+          // next component is now ready to load
           this.router.navigate('/registerPage/extraInfo/');
         },
       }),
     );
-      
-      // return the home container
-      return registerContainer;
-    
+    // return the home container
+    return registerContainer;
   }
 }
 
