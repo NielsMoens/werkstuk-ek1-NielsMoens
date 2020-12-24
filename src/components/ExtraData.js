@@ -17,7 +17,6 @@ class ExtraData extends Component {
     });
   }
 
-  // @TODO render in the right content for the right kind of users: business or visitor
   async render() {
     // first what we need is the reference of the user aka the uid
     const uid = localStorage.getItem('uid');
@@ -29,6 +28,7 @@ class ExtraData extends Component {
     // (? = love the es next to filter directly on undefined's)
     const collectionData = await userDoc.getCollectionData();
     const type = collectionData.data()?.registerChoice;
+    console.log('userdoc', type);
 
     //  create container
     const extrainfoContainer = document.createElement('form');
@@ -39,6 +39,7 @@ class ExtraData extends Component {
       }),
     );
 
+    // render in the right content for the right kind of users: business or visitor
     // Check the type of visitor that is stored in the local host
     // to load the right profile info form elements
     if (type === 'visitor') {
@@ -127,7 +128,7 @@ class ExtraData extends Component {
           // @important NAME IS IMPORTANT
           name: 'dateofbirth',
           id: 'dateofbirth',
-          placeholder: 'lastname',
+          placeholder: 'dateofbirth',
           type: 'text',
         }),
       );
@@ -159,8 +160,11 @@ class ExtraData extends Component {
           }
           console.log(userData);
           await user.savedata(userData, true);
-
-          this.router.navigate('/visitorDashboard/');
+          if (type === 'visitor') {
+            this.router.navigate('/visitorDashboard/');
+          } else if (type === 'business') {
+            this.router.navigate('/businessDashboard/');
+          }
         },
       }),
     );

@@ -15,5 +15,7 @@ module.exports = {
     'no-param-reassign': 0,
     'eol-last': 0, // set this on 0 if you're using beautify extension
     'prefer-destructuring': 0,
+    'function-paren-newline': 0,
+    curly: 0,
   },
 };

@@ -414,6 +414,9 @@ body #appContainer form {
 body #appContainer form h1 {
   color: white;
 }
+body h2 {
+  color: white;
+}
 
 label {
   color: white;

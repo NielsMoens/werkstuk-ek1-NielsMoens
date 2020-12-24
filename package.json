@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^8.2.1",
+    "handlebars": "^4.7.6",
     "navigo": "^7.1.2",
     "node-sass": "^5.0.0",
     "regenerator-runtime": "^0.13.7"

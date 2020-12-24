@@ -4,8 +4,17 @@
  * */
 
 import '../sass/main.scss';
+import handlebarsHeader from '../views/templates/handlebarsHeader';
+
+const Handlebars = require('handlebars');
 
 const Elements = {
+  handlebarsHeader(headerData) {
+    const template = Handlebars.compile(handlebarsHeader);
+    const header = template({ headerData });
+    return header;
+  },
+
   generateInput(attributes) {
     const input = document.createElement('input');
     Object.keys(attributes).forEach((attrib) => {
@@ -23,18 +32,23 @@ const Elements = {
     return div;
   },
 
-  createButton({ textContent = '', onClick = null }) {
+  createButton({
+    textContent = '',
+    onClick = null,
+  }) {
     const button = document.createElement('button');
     button.textContent = textContent;
-    if (onClick)button.addEventListener('click', (event) => { onClick(event); });
+    if (onClick) button.addEventListener('click', (event) => {
+      onClick(event);
+    });
     return button;
   },
-  createGooglesignin() {
-    const img = document.createElement('img');
-    img.src = 'src/assets/btn_google_signin_light_pressed_web.png';
-    // if (onClick)img.addEventListener('click', (event) => { onClick(event); });
-    return img;
-  },
+  // createGooglesignin() {
+  //   const img = document.createElement('img');
+  //   img.src = 'src/assets/btn_google_signin_light_pressed_web.png';
+  //   // if (onClick)img.addEventListener('click', (event) => { onClick(event); });
+  //   return img;
+  // },
 
   createHeader({
     size = 1,
@@ -46,7 +60,11 @@ const Elements = {
     return header;
   },
 
-  createLink({ href, textContent = '', target = '_self' }) {
+  createLink({
+    href,
+    textContent = '',
+    target = '_self',
+  }) {
     const a = document.createElement('a');
     if (href) a.href = href;
     a.textContent = textContent;
@@ -54,9 +72,15 @@ const Elements = {
     return a;
   },
 
-  createList({ items = [], ordered = false }) {
+  createList({
+    items = [],
+    ordered = false,
+  }) {
     const list = document.createElement(ordered ? 'ol' : 'ul');
-    items.forEach(({ textContent, href }) => {
+    items.forEach(({
+      textContent,
+      href,
+    }) => {
       const li = document.createElement('li');
       if (!href) li.textContent = textContent;
       else {
