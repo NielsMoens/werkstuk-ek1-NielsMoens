@@ -16,6 +16,11 @@ class DataBaseManager {
     });
   }
 
+  async BusinessRegistered(data) {
+    await firebase.firestore().collection(this.collection).add(data, {
+    });
+  }
+
   async getCollectionData() {
     return firebase.firestore().collection(this.collection).doc(this.doc).get();
   }

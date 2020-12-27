@@ -17,5 +17,7 @@ module.exports = {
     'prefer-destructuring': 0,
     'function-paren-newline': 0,
     curly: 0,
+    'linebreak-style': 0,
+    'no-restricted-syntax': 0,
   },
 };

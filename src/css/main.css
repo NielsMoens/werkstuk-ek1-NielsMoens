@@ -417,6 +417,9 @@ body #appContainer form h1 {
 body h2 {
   color: white;
 }
+body .hide {
+  display: none !important;
+}
 
 label {
   color: white;

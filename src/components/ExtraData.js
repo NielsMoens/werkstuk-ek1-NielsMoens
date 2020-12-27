@@ -3,18 +3,35 @@
  * My Products Components
  */
 
-import 'regenerator-runtime/runtime';
+// import {
+//   create,
+// } from 'handlebars';
+// import { async } from 'regenerator-runtime';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import DataBaseManager from '../lib/DatabaseManager';
+import BusinessNames from '../lib/BusinessNames';
 
 class ExtraData extends Component {
   constructor() {
     super({
       name: 'extraInfo',
-      model: {},
+      model: {
+        businessNames: null,
+      },
       routerPath: '/registerPage/extraInfo/',
     });
+    this.businessLoaded = false;
+  }
+
+  async loadBusinessNames() {
+    if (!this.businessLoaded) {
+      await BusinessNames.CheckRegistered()
+        .then((data) => {
+          this.model.businessNames = data;
+          console.log((data));
+        });
+    }
   }
 
   async render() {
@@ -41,7 +58,7 @@ class ExtraData extends Component {
 
     // render in the right content for the right kind of users: business or visitor
     // Check the type of visitor that is stored in the local host
-    // to load the right profile info form elements
+    // then load the right profile info form elements
     if (type === 'visitor') {
       console.log('has visitor');
       //  append visitor container
@@ -56,7 +73,6 @@ class ExtraData extends Component {
 
       extrainfoContainer.appendChild(
         Elements.generateInput({
-          // @important NAME IS IMPORTANT
           name: 'lastname',
           id: 'lastname',
           placeholder: 'lastname',
@@ -66,7 +82,6 @@ class ExtraData extends Component {
 
       extrainfoContainer.appendChild(
         Elements.generateInput({
-          // @important NAME IS IMPORTANT
           name: 'dateofbirth',
           id: 'dateofbirth',
           placeholder: 'lastname',
@@ -76,7 +91,6 @@ class ExtraData extends Component {
 
       extrainfoContainer.appendChild(
         Elements.generateInput({
-          // @important NAME IS IMPORTANT
           name: 'phonenum',
           id: 'phonenum',
           placeholder: 'phonenum',
@@ -84,19 +98,30 @@ class ExtraData extends Component {
         }),
       );
     } else if (type === 'business') {
-      console.log('business owner');
-      extrainfoContainer.appendChild(
-        Elements.generateInput({
-          name: 'busName',
-          id: 'busName',
-          placeholder: 'business Name',
-          type: 'text',
-        }),
+      //  create a dropdown with all the business names fetched form the stadgent API
+      const dropdown = document.createElement('select');
+      dropdown.setAttribute('name', 'businessName');
+      if (!this.model.businessNames) {
+        extrainfoContainer.className = 'hide';
+        await this.loadBusinessNames();
+        this.businessLoaded = true;
+      } else {
+        extrainfoContainer.className = 'nothingtoseehere';
+        this.model.businessNames.forEach((element) => {
+          const option = document.createElement('option');
+          option.setAttribute('value', element);
+          option.innerHTML = element;
+          dropdown.appendChild(option);
+        });
+      }
+
+      extrainfoContainer.appendChild(dropdown);
+      extrainfoContainer.append(
+        document.createElement('option'),
       );
 
       extrainfoContainer.appendChild(
         Elements.generateInput({
-          // @important NAME IS IMPORTANT
           name: 'maxcapa',
           id: 'maxcapa',
           placeholder: 'maximum capacity',
@@ -115,7 +140,6 @@ class ExtraData extends Component {
 
       extrainfoContainer.appendChild(
         Elements.generateInput({
-          // @important NAME IS IMPORTANT
           name: 'lastname',
           id: 'lastname',
           placeholder: 'lastname',
@@ -125,7 +149,6 @@ class ExtraData extends Component {
 
       extrainfoContainer.appendChild(
         Elements.generateInput({
-          // @important NAME IS IMPORTANT
           name: 'dateofbirth',
           id: 'dateofbirth',
           placeholder: 'dateofbirth',
@@ -135,7 +158,6 @@ class ExtraData extends Component {
 
       extrainfoContainer.appendChild(
         Elements.generateInput({
-          // @important NAME IS IMPORTANT
           name: 'phonenum',
           id: 'phonenum',
           placeholder: 'phonenum',
@@ -151,15 +173,27 @@ class ExtraData extends Component {
         onClick: async (event) => {
           event.preventDefault();
           const user = new DataBaseManager('userdata', uid);
-          console.log(user.doc);
-          const formData = new FormData(document.querySelector('form'));
+          //  [tempFix] Hier knijpen we de oogjes even dicht >.<
+          const formData = new FormData(document.querySelector('.nothingtoseehere'));
 
+          //  save the form data in an object
           const userData = {};
           for (const data of formData.entries()) {
             userData[data[0]] = data[1];
           }
-          console.log(userData);
-          await user.savedata(userData, true);
+          //  save the Business names in a seperate Object
+          const registeredBusinesses = {
+            businessName: userData.businessName,
+          };
+
+          //  store/merge the form data in the firestore collection Userdata
+          await user.savedata(userData, true)
+
+            // store the registeredBusiness names in a seperate firestore collection
+            .then(async () => {
+              const registeredBusiness = new DataBaseManager('BusinessRegistered', uid);
+              await registeredBusiness.BusinessRegistered(registeredBusinesses);
+            });
           if (type === 'visitor') {
             this.router.navigate('/visitorDashboard/');
           } else if (type === 'business') {
