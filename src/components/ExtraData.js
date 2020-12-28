@@ -2,10 +2,6 @@
  * My ExtraData Components
  */
 
-// import {
-//   create,
-// } from 'handlebars';
-// import { async } from 'regenerator-runtime';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import DataBaseManager from '../lib/DatabaseManager';

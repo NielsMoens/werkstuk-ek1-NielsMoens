@@ -7,10 +7,18 @@ import '../sass/main.scss';
 import handlebarsHeader from '../views/templates/handlebarsHeader';
 import BusDashboardHeader from '../views/templates/BusDashboardHeader';
 import visDashboard from '../views/templates/visDashboard';
+import CheckinScanner from '../views/templates/CheckinScanner';
+import UniqueQRcode from '../views/templates/UniqueQRcode';
+import Activevisitor from '../views/templates/Activevisitor';
+import BusinessHistory from '../views/templates/BusinessHistory';
+import ProfilInfo from '../views/templates/ProfilInfo';
+import Visitorhistory from '../views/templates/Visitorhistory';
+import BussinesInfo from '../views/templates/BussinesInfo';
 
 const Handlebars = require('handlebars');
 
 const Elements = {
+  //  handlebars elements
   handlebarsHeader(headerData) {
     const template = Handlebars.compile(handlebarsHeader);
     const header = template({ headerData });
@@ -26,6 +34,41 @@ const Elements = {
     const template = Handlebars.compile(visDashboard);
     const visitorDashboard = template({ visData });
     return visitorDashboard;
+  },
+  CheckinScanner(checkin) {
+    const template = Handlebars.compile(CheckinScanner);
+    const checkindata = template({ checkin });
+    return checkindata;
+  },
+  UniqueQRcode(checkin) {
+    const template = Handlebars.compile(UniqueQRcode);
+    const checkindata = template({ checkin });
+    return checkindata;
+  },
+  Activevisitor(activevisitor) {
+    const template = Handlebars.compile(Activevisitor);
+    const active = template({ activevisitor });
+    return active;
+  },
+  BusinessHistory(busHistory) {
+    const template = Handlebars.compile(busHistory);
+    const businesshis = template({ busHistory });
+    return businesshis;
+  },
+  ProfilInfo(profilInfo) {
+    const template = Handlebars.compile(profilInfo);
+    const profinfo = template({ profilInfo });
+    return profinfo;
+  },
+  Visitorhistory(vishistory) {
+    const template = Handlebars.compile(vishistory);
+    const vishisto = template({ vishistory });
+    return vishisto;
+  },
+  BussinesInfo(busInfo) {
+    const template = Handlebars.compile(busInfo);
+    const businessInfo = template({ busInfo });
+    return businessInfo;
   },
 
   generateInput(attributes) {
