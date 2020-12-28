@@ -95,7 +95,7 @@ class RegisterComponent extends Component {
     // create & append button -> store all the data in firestore
     registerContainer.appendChild(
       Elements.createButton({
-        textContent: 'register',
+        textContent: 'Register & Continue',
         onClick: async (event) => {
           event.preventDefault();
           const formData = new FormData(document.querySelector('form'));

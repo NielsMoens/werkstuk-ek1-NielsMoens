@@ -2,16 +2,35 @@
  * My Home Components
  */
 
-import 'regenerator-runtime/runtime';
 import Component from '../lib/components';
+import Elements from '../lib/Elements';
 
-class businessDashboard extends Component {
+class BusinessDashboard extends Component {
   constructor() {
     super({
-      name: 'home',
+      name: 'businessDashboard',
       model: {},
-      routerPath: '/',
+      routerPath: '/businessDashboard',
     });
   }
+
+  render() {
+    //  create a home container
+    const homeContainer = document.createElement('header');
+    homeContainer.className = 'header';
+
+    // load in content with handlebars
+    homeContainer.insertAdjacentHTML('afterbegin',
+      Elements.BusDashboardHeader({
+        logout: '/',
+        UserName: 'Username',
+        title: 'HORECONA',
+        subtitle: 'business',
+      }),
+    );
+
+    // return the home container
+    return homeContainer;
+  }
 }
-export default businessDashboard;
+export default BusinessDashboard;

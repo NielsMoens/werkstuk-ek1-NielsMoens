@@ -5,12 +5,19 @@
 
 import '../sass/main.scss';
 import handlebarsHeader from '../views/templates/handlebarsHeader';
+import BusDashboardHeader from '../views/templates/BusDashboardHeader';
 
 const Handlebars = require('handlebars');
 
 const Elements = {
   handlebarsHeader(headerData) {
     const template = Handlebars.compile(handlebarsHeader);
+    const header = template({ headerData });
+    return header;
+  },
+
+  BusDashboardHeader(headerData) {
+    const template = Handlebars.compile(BusDashboardHeader);
     const header = template({ headerData });
     return header;
   },

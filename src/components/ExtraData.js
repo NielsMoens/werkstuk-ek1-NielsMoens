@@ -1,6 +1,5 @@
-/* eslint-disable no-restricted-syntax */
 /**
- * My Products Components
+ * My ExtraData Components
  */
 
 // import {

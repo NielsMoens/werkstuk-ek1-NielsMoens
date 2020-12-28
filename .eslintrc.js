@@ -19,5 +19,6 @@ module.exports = {
     curly: 0,
     'linebreak-style': 0,
     'no-restricted-syntax': 0,
+    'class-methods-use-this': 0,
   },
 };

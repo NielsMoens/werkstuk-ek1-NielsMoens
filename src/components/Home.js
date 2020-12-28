@@ -34,13 +34,6 @@ class HomeComponent extends Component {
       }),
     );
 
-    // homeContainer.insertAdjacentHTML('afterbegin',
-    //   Elements.handlebarsHeader({
-    //     title: 'HORECONA',
-    //     subtitle: 'testje',
-    //   }),
-    // );
-
     //  append from header
     form.appendChild(
       Elements.generateInput({

@@ -1,0 +1,18 @@
+//
+// Home Page Specific
+//
+
+@use '../abstracts/variables'as vars;
+@use '../abstracts/functions'as func;
+@use '../abstracts/mixins'as mix;
+@use '../abstracts/mediamixins'as media;
+
+body {
+  background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+  ;
+  color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+
+  h1, p, a, li {
+    color: map-get($map: vars.$mainLogin-colors, $key: mainTextColor);
+  }
+}
