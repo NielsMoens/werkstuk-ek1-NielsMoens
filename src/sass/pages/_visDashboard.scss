@@ -8,7 +8,5 @@
 @use '../abstracts/mediamixins'as media;
 
 body {
-  h1, p, a, li {
-    color: map-get($map: vars.$mainLogin-colors, $key: mainTextColor);
-  }
+ 
 }

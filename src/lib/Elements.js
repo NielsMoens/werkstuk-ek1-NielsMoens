@@ -6,6 +6,7 @@
 import '../sass/main.scss';
 import handlebarsHeader from '../views/templates/handlebarsHeader';
 import BusDashboardHeader from '../views/templates/BusDashboardHeader';
+import visDashboard from '../views/templates/visDashboard';
 
 const Handlebars = require('handlebars');
 
@@ -18,8 +19,13 @@ const Elements = {
 
   BusDashboardHeader(headerData) {
     const template = Handlebars.compile(BusDashboardHeader);
-    const header = template({ headerData });
-    return header;
+    const businessDashboard = template({ headerData });
+    return businessDashboard;
+  },
+  visDashboard(visData) {
+    const template = Handlebars.compile(visDashboard);
+    const visitorDashboard = template({ visData });
+    return visitorDashboard;
   },
 
   generateInput(attributes) {

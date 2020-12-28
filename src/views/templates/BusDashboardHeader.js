@@ -9,9 +9,6 @@ export default `
 </header>
 
 <div class="busDashboard">
-    {{!-- <div class="mapbox">
-        <a href="#"></a>
-    </div> --}}
     <ul>
         <li>
             <a href="">
@@ -36,7 +33,7 @@ export default `
                 <i class="fas fa-edit"></i>
                 <p>Edit Business Info</p>
             </a>
-        </li>     
+        </li>
     </ul>
 </div>
 `;

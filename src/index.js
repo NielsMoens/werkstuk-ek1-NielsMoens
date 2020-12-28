@@ -3,7 +3,7 @@ import './sass/main.scss';
 import App from './App';
 import initFirebase from './lib/Firebase';
 import {
-  HomeComponent, ExtraData, RegisterComponent, BusinessDashboard,
+  HomeComponent, ExtraData, RegisterComponent, BusinessDashboard, VisitorDashboard,
 } from './components';
 
 const initApp = () => {
@@ -15,6 +15,7 @@ const initApp = () => {
   app.addComponent(new RegisterComponent());
   app.addComponent(new ExtraData());
   app.addComponent(new BusinessDashboard());
+  app.addComponent(new VisitorDashboard());
 };
 
 window.addEventListener('load', initApp);

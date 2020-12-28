@@ -16,8 +16,8 @@ class BusinessDashboard extends Component {
 
   render() {
     //  create a home container
-    const homeContainer = document.createElement('header');
-    homeContainer.className = 'header';
+    const homeContainer = document.createElement('div');
+    homeContainer.className = 'businessDashboard';
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
