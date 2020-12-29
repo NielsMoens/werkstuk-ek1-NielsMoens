@@ -5,7 +5,7 @@
 import HomeComponent from './Home';
 import RegisterComponent from './RegisterChoise';
 import ExtraData from './ExtraData';
-import BusinessDashboard from './BusinessDashboard';
+// import BusinessDashboard from './BusinessDashboard';
 import VisitorDashboard from './VisitorDashboard';
 import CheckinScanner from './CheckinScanner';
 import BusinessHistory from './BusinessHistory';
@@ -19,7 +19,7 @@ export {
   HomeComponent,
   RegisterComponent,
   ExtraData,
-  BusinessDashboard,
+  // BusinessDashboard,
   VisitorDashboard,
   CheckinScanner,
   BusinessHistory,
