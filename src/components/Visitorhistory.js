@@ -21,11 +21,12 @@ class Visitorhistory extends Component {
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
-      Elements.visDashboard({
+      Elements.Visitorhistory({
         logout: '/',
         UserName: 'Username',
         title: 'HORECONA',
         subtitle: 'visitor',
+        info: 'Visitorhistory',
       }),
     );
 

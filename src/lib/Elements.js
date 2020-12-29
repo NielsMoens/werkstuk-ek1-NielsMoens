@@ -51,22 +51,22 @@ const Elements = {
     return active;
   },
   BusinessHistory(busHistory) {
-    const template = Handlebars.compile(busHistory);
+    const template = Handlebars.compile(BusinessHistory);
     const businesshis = template({ busHistory });
     return businesshis;
   },
   ProfilInfo(profilInfo) {
-    const template = Handlebars.compile(profilInfo);
+    const template = Handlebars.compile(ProfilInfo);
     const profinfo = template({ profilInfo });
     return profinfo;
   },
   Visitorhistory(vishistory) {
-    const template = Handlebars.compile(vishistory);
+    const template = Handlebars.compile(Visitorhistory);
     const vishisto = template({ vishistory });
     return vishisto;
   },
   BussinesInfo(busInfo) {
-    const template = Handlebars.compile(busInfo);
+    const template = Handlebars.compile(BussinesInfo);
     const businessInfo = template({ busInfo });
     return businessInfo;
   },

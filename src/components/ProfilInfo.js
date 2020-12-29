@@ -21,11 +21,12 @@ class ProfileInfo extends Component {
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
-      Elements.visDashboard({
+      Elements.ProfilInfo({
         logout: '/',
         UserName: 'Username',
         title: 'HORECONA',
         subtitle: 'visitor',
+        info: 'ProfilInfo',
       }),
     );
 

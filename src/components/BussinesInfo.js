@@ -21,11 +21,12 @@ class BussinessInfo extends Component {
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
-      Elements.visDashboard({
+      Elements.BussinesInfo({
         logout: '/',
         UserName: 'Username',
         title: 'HORECONA',
         subtitle: 'Business',
+        info: 'Bussines Info',
       }),
     );
 

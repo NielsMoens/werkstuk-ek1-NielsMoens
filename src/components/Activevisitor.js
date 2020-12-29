@@ -21,11 +21,12 @@ class Activevisitor extends Component {
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
-      Elements.visDashboard({
+      Elements.Activevisitor({
         logout: '/',
         UserName: 'Username',
         title: 'HORECONA',
         subtitle: 'visitor',
+        info: 'Active visitors',
       }),
     );
 
