@@ -10,6 +10,7 @@ export default `
 
 <div class="busDashboard">
     <div class="mapbox">
+       
         <a href="#">450 <br> Registered businesses</a>
     </div>
     <ul>

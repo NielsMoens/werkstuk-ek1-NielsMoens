@@ -2,13 +2,12 @@
  * get BusinessNames
  */
 
-// import { async } from 'regenerator-runtime/runtime';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const BusinessNames = {
   //  Fetch  all the business data from the stad gent API
-  //  special thanks to kobe for explaining/helping ._.
+  //  special thanks to Kobe for explaining/helping ._.
   getAll: async () => new Promise((resolve) => {
     const url = 'https://data.stad.gent/api/records/1.0/search/?dataset=koop-lokaal-horeca&q=&rows=420&facet=postcode&facet=gemeente&refine.postcode=9000';
     fetch(url)

@@ -430,4 +430,9 @@ body h1, body p, body a, body li {
   color: white;
 }
 
+.showMap {
+  width: 400px;
+  height: 300px;
+}
+
 /*# sourceMappingURL=main.css.map */

@@ -1,7 +1,6 @@
 /**
  * My Home Components
  */
-
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 
@@ -26,6 +25,27 @@ class VisitorDashboard extends Component {
         UserName: 'Username',
         title: 'HORECONA',
         subtitle: 'visitor',
+      }),
+    );
+
+    // add map provided by mapbox
+    document.getElementById('map').className = 'showMap';
+
+    // CDN's are injected on the window by default since you import the script in the main index
+    const map = new window.mapboxgl.Map({
+      accessToken: 'pk.eyJ1IjoibmllbHNtb2VucyIsImEiOiJjanV3Z2w0c2gwNmdvNDRwZ3BvcGZtMGNwIn0.XhWcDDDcTVuFc3DkBPLTlg',
+      container: 'map', // container id
+      style: 'mapbox://styles/mapbox/streets-v11', // style URL
+      center: [51.05, 3.71667], // starting position [lng, lat]
+      zoom: 9, // starting zoom
+    });
+    map.addControl(
+      // eslint-disable-next-line no-undef
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
       }),
     );
 
