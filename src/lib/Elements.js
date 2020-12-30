@@ -8,7 +8,7 @@ import handlebarsHeader from '../views/templates/handlebarsHeader';
 import busDashboardHeader from '../views/templates/busDashboardHeader';
 import visDashboard from '../views/templates/visDashboard';
 import CheckinScanner from '../views/templates/CheckinScanner';
-import UniqueQRcode from '../views/templates/UniqueQRcode';
+import UniqueQrcode from '../views/templates/UniQrcode';
 import Activevisitor from '../views/templates/Activevisitor';
 import BusinessHistory from '../views/templates/BusinessHistory';
 import ProfilInfo from '../views/templates/ProfilInfo';
@@ -40,10 +40,10 @@ const Elements = {
     const checkindata = template({ checkin });
     return checkindata;
   },
-  UniqueQRcode(checkin) {
-    const template = Handlebars.compile(UniqueQRcode);
-    const checkindata = template({ checkin });
-    return checkindata;
+  UniqueQrcode(uniqueCode) {
+    const template = Handlebars.compile(UniqueQrcode);
+    const uniq = template({ uniqueCode });
+    return uniq;
   },
   Activevisitor(activevisitor) {
     const template = Handlebars.compile(Activevisitor);

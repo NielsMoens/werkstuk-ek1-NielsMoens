@@ -28,8 +28,8 @@ const initApp = () => {
   app.addComponent(new BusinessDashboard());
   app.addComponent(new VisitorDashboard());
   app.addComponent(new CheckinScanner());
-  app.addComponent(new BusinessHistory());
   app.addComponent(new UniqueQRcode());
+  app.addComponent(new BusinessHistory());
   app.addComponent(new Activevisitor());
   app.addComponent(new Visitorhistory());
   app.addComponent(new ProfilInfo());

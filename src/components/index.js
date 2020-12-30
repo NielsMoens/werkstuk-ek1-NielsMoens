@@ -9,7 +9,7 @@ import BusinessDashboard from './BusinessDashboard';
 import VisitorDashboard from './VisitorDashboard';
 import CheckinScanner from './CheckinScanner';
 import BusinessHistory from './BusinessHistory';
-import UniqueQRcode from './UniqueQRcode';
+import UniqueQRcode from './UniqueQrcode';
 import Activevisitor from './Activevisitor';
 import Visitorhistory from './Visitorhistory';
 import ProfilInfo from './ProfilInfo';

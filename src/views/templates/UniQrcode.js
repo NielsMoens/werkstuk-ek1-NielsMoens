@@ -8,7 +8,8 @@ export default `
     <p class="subtitle__businessDash">{{uniqueCode.subtitle}}</p>
 </header>
 
-<div class="busDashboard">
+<div class="unicode">
    <h2> {{uniqueCode.info}} </h2>
 </div>
+
 `;

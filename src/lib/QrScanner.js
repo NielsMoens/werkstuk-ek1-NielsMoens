@@ -2,16 +2,18 @@
  * QR code scanner
  */
 
-// Special thanks to Emiel De Vleeschouwer for porviding us with an awesome example
+// Special thanks to Emiel De Vleeschouwer for providing us with an awesome example
 const QrScanner = async () => new Promise((resolve) => {
   // This method will trigger user permissions
   // eslint-disable-next-line no-undef
   Html5Qrcode.getCameras().then((devices) => {
     if (devices && devices.length) {
-      const cameraId = devices[0].id; // <-- Select first camera in the list
-      // eslint-disable-next-line no-undef
-      const html5QrCode = new Html5Qrcode('reader'); // <-- reader-div element id
+      // Select first camera in the list
+      const cameraId = devices[0].id;
 
+      // Reader-div element id
+      // eslint-disable-next-line no-undef
+      const html5QrCode = new Html5Qrcode('reader');
       const aspectRatio = window.screen.height / window.screen.width;
 
       // Start the scanner

@@ -11,7 +11,7 @@ export default `
 <div class="busDashboard">
     <ul>
         <li>
-            <a href="">
+            <a href="/businessDashboard/UniqueQRcode">
                 <i class="fas fa-qrcode"></i>
                 <p>create QR-code</p>
             </a>
