@@ -36,7 +36,7 @@ class VisitorDashboard extends Component {
       accessToken: 'pk.eyJ1IjoibmllbHNtb2VucyIsImEiOiJjanV3Z2w0c2gwNmdvNDRwZ3BvcGZtMGNwIn0.XhWcDDDcTVuFc3DkBPLTlg',
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v11', // style URL
-      center: [51.05, 3.71667], // starting position [lng, lat]
+      center: [3.733333, 51.049999], // starting position [lng, lat]
       zoom: 9, // starting zoom
     });
     map.addControl(

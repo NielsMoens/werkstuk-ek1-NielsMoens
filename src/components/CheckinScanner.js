@@ -4,14 +4,24 @@
 
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
+import Qrscanner from '../lib/QrScanner';
 
 class CheckinScanner extends Component {
   constructor() {
     super({
       name: 'CheckinScanner',
-      model: {},
+      model: {
+
+      },
       routerPath: '/visitorDashboard/CheckinScanner',
     });
+  }
+
+  async qrscanner() {
+    await Qrscanner()
+      .then((message) => {
+        console.log(message);
+      });
   }
 
   render() {
@@ -29,6 +39,11 @@ class CheckinScanner extends Component {
         info: 'Scan QR-code from business:',
       }),
     );
+
+    const scanner = document.createElement('div');
+    scanner.id = 'reader';
+    homeContainer.appendChild(scanner);
+    this.qrscanner();
 
     // return the home container
     return homeContainer;

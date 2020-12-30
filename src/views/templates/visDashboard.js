@@ -15,7 +15,7 @@ export default `
     </div>
     <ul>
         <li>
-            <a href="">
+            <a href="/visitorDashboard/CheckinScanner">
                 <i class="fas fa-map-marked-alt"></i>
                 <p>Check-in</p>
             </a>
