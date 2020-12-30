@@ -21,7 +21,7 @@ class BusinessDashboard extends Component {
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
-      Elements.BusDashboardHeader({
+      Elements.busDashboardHeader({
         logout: '/',
         UserName: 'Username',
         title: 'HORECONA',

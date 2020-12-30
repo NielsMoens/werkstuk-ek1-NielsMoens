@@ -5,7 +5,7 @@
 
 import '../sass/main.scss';
 import handlebarsHeader from '../views/templates/handlebarsHeader';
-import BusDashboardHeader from '../views/templates/BusDashboardHeader';
+import busDashboardHeader from '../views/templates/busDashboardHeader';
 import visDashboard from '../views/templates/visDashboard';
 import CheckinScanner from '../views/templates/CheckinScanner';
 import UniqueQRcode from '../views/templates/UniqueQRcode';
@@ -25,8 +25,8 @@ const Elements = {
     return header;
   },
 
-  BusDashboardHeader(headerData) {
-    const template = Handlebars.compile(BusDashboardHeader);
+  busDashboardHeader(headerData) {
+    const template = Handlebars.compile(busDashboardHeader);
     const businessDashboard = template({ headerData });
     return businessDashboard;
   },
