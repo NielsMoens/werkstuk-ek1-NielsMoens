@@ -2,6 +2,7 @@
  * My Home Components
  */
 
+import firebase from 'firebase/app';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 
@@ -14,7 +15,7 @@ class UniqueQRcode extends Component {
     });
   }
 
-  render() {
+  async render() {
     //  create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'Activevisitor';
@@ -30,6 +31,26 @@ class UniqueQRcode extends Component {
       }),
     );
 
+    const businessData = async () => {
+      let busData = {};
+      const uid = localStorage.getItem('uid');
+      const data = firebase.firestore().collection('BusinessRegistered');
+      console.log(data);
+      const snapshot = await data.where('userdata', '==', uid).get();
+      if (snapshot.empty) {
+        console.log('No matching documents.');
+        return null;
+      }
+      snapshot.forEach((doc) => {
+        console.log('registerChoice', doc.data());
+        busData = doc.data();
+      });
+      return busData;
+    };
+    const businessInfo = await businessData();
+
+    console.log(btoa(businessInfo.userdata));
+
     const scanner = document.createElement('div');
     scanner.id = 'canvas';
     homeContainer.appendChild(scanner);
@@ -38,11 +59,12 @@ class UniqueQRcode extends Component {
     const qrCode = new QRCodeStyling({
       width: 300,
       height: 300,
-      data: 'www.urdoinggreat.com',
+      // super secure shizzle hier
+      data: btoa(businessInfo.userdata), // to base64
       image: 'https://cdn.discordapp.com/emojis/788540965647679489.png',
       dotsOptions: {
         color: 'black',
-        type: 'extra-rounded',
+        type: 'classic',
       },
       backgroundOptions: {
         color: 'white',

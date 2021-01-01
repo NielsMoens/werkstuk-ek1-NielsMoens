@@ -3,6 +3,7 @@
  */
 
 import Component from '../lib/components';
+import DataBaseManager from '../lib/DatabaseManager';
 import Elements from '../lib/Elements';
 import Qrscanner from '../lib/QrScanner';
 
@@ -20,7 +21,12 @@ class CheckinScanner extends Component {
   async qrscanner() {
     await Qrscanner()
       .then((message) => {
-        console.log(message);
+        const userId = localStorage.getItem('uid');
+        const businessId = atob(message); // to text
+        const saveCheckins = new DataBaseManager('saveCheckins', businessId);
+        // check if userId already exist @TODO
+        saveCheckins.updateData(userId);
+        console.log(businessId);
       });
   }
 

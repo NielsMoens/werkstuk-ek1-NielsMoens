@@ -16,6 +16,21 @@ class DataBaseManager {
     });
   }
 
+  async updateData(data) {
+    firebase.firestore().collection(this.collection).doc(this.doc).update({
+      users: firebase.firestore.FieldValue.arrayUnion(data),
+    })
+      .catch(() => {
+        firebase.firestore().collection(this.collection).doc(this.doc).set({ users: [data] });
+      });
+  }
+
+  async removeUserFromArray(id) {
+    firebase.firestore().collection(this.collection).doc(this.doc).update({
+      users: firebase.firestore.FieldValue.arrayRemove(id),
+    });
+  }
+
   async BusinessRegistered(data) {
     await firebase.firestore().collection(this.collection).add(data, {
     });

@@ -66,6 +66,7 @@ class HomeComponent extends Component {
           event.preventDefault();
           const formData = new FormData(document.querySelector('form'));
           const email = formData.get('email');
+          window.localStorage.setItem('email', email);
           const password = formData.get('password');
           const auth = new Authentication({
             email,
@@ -77,6 +78,10 @@ class HomeComponent extends Component {
             // @TODO Show error
             return;
           }
+
+          const userUid = response.user.uid;
+          window.localStorage.setItem('uid', userUid);
+
           //  Check the firestore database on the email the user entered in the login form
           const userdata = firebase.firestore().collection('userdata');
           const snapshot = await userdata.where('email', '==', email).get();
@@ -85,7 +90,7 @@ class HomeComponent extends Component {
             return;
           }
 
-          // same the registerType to check which kind of user is trying to login
+          // save the registerType to check which kind of user is trying to login
           // Then redirect the user to the right dashbaord
           let registerType = '';
           snapshot.forEach((doc) => {

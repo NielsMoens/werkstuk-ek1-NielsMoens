@@ -1,7 +1,10 @@
 /**
  * My Home Components
  */
+import firebase from 'firebase/app';
+import { async } from 'regenerator-runtime';
 import Component from '../lib/components';
+import DataBaseManager from '../lib/DatabaseManager';
 import Elements from '../lib/Elements';
 
 class VisitorDashboard extends Component {
@@ -27,7 +30,25 @@ class VisitorDashboard extends Component {
         subtitle: 'visitor',
       }),
     );
-
+    const checkout = async (/* businessId */) => {
+      const userId = localStorage.getItem('uid');
+      /* const data = firebase.firestore().collection('saveCheckins').doc(businessId);
+      const snapshot = await data.where('users', '==', userId).get();
+      if (!snapshot) {
+        console.log('user is not checked in');
+      } else { */
+      const databaseManager = new DataBaseManager('saveCheckins', 'sHeLPW0dvNaMJt7bf4ifNgp5OUM2');
+      databaseManager.removeUserFromArray(userId);
+      // }
+    };
+    homeContainer.append(
+      Elements.createButton({
+        textContent: 'check out',
+        onClick: async () => {
+          await checkout();
+        },
+      }),
+    );
     // add map provided by mapbox
     document.getElementById('map').className = 'showMap';
 

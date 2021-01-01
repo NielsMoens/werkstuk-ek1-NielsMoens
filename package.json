@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^8.2.1",
+    "firebase-admin": "^9.4.2",
     "handlebars": "^4.7.6",
     "html5-qrcode": "^1.2.4",
     "mapbox-gl": "^2.0.1",
