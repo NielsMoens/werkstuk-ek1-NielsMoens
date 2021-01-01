@@ -25,9 +25,9 @@ const Elements = {
     return header;
   },
 
-  busDashboardHeader(headerData) {
+  busDashboardHeader(busDashboard) {
     const template = Handlebars.compile(busDashboardHeader);
-    const businessDashboard = template({ headerData });
+    const businessDashboard = template({ busDashboard });
     return businessDashboard;
   },
   visDashboard(visData) {

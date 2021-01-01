@@ -33,7 +33,7 @@ class UniqueQRcode extends Component {
     const scanner = document.createElement('div');
     scanner.id = 'canvas';
     homeContainer.appendChild(scanner);
-
+    // if search the uid from localhost in
     // eslint-disable-next-line no-undef
     const qrCode = new QRCodeStyling({
       width: 300,

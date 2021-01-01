@@ -9,10 +9,6 @@ export default `
 </header>
 
 <div class="busDashboard">
-    <div class="mapbox">
-       
-        <a href="#">450 <br> Registered businesses</a>
-    </div>
     <ul>
         <li>
             <a href="/visitorDashboard/CheckinScanner">

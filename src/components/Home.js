@@ -71,12 +71,36 @@ class HomeComponent extends Component {
             email,
             password,
           });
+          console.log('email', email);
           const response = await auth.login(email, password);
           if (!response) {
             // @TODO Show error
             return;
           }
-          this.router.navigate('/products/');
+          //  Check the firestore database on the email the user entered in the login form
+          const userdata = firebase.firestore().collection('userdata');
+          const snapshot = await userdata.where('email', '==', email).get();
+          if (snapshot.empty) {
+            console.log('No matching documents.');
+            return;
+          }
+
+          // same the registerType to check which kind of user is trying to login
+          // Then redirect the user to the right dashbaord
+          let registerType = '';
+          snapshot.forEach((doc) => {
+            console.log('registerChoice', doc.get('registerChoice'));
+            registerType = doc.get('registerChoice');
+          });
+          console.log(registerType);
+
+          if (registerType === 'business') {
+            console.log('joepieee BUSINESS', registerType);
+            this.router.navigate('/businessDashboard');
+          } else if (registerType === 'visitor') {
+            console.log('joepieee visitor', registerType);
+            this.router.navigate('/visitorDashboard');
+          }
         },
       }),
     );

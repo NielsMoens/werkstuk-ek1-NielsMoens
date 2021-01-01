@@ -44,6 +44,7 @@ class ExtraData extends Component {
 
     //  create container
     const extrainfoContainer = document.createElement('form');
+    // extrainfoContainer.className = 'nothingtoseehere';
     extrainfoContainer.setAttribute('method', 'POST');
     extrainfoContainer.appendChild(
       Elements.createHeader({
@@ -79,7 +80,7 @@ class ExtraData extends Component {
         Elements.generateInput({
           name: 'dateofbirth',
           id: 'dateofbirth',
-          placeholder: 'lastname',
+          placeholder: 'dateofb',
           type: 'text',
         }),
       );
@@ -167,28 +168,34 @@ class ExtraData extends Component {
         textContent: 'Save & Continue',
         onClick: async (event) => {
           event.preventDefault();
-          const user = new DataBaseManager('userdata', uid);
-          //  [tempFix] Hier knijpen we de oogjes even dicht >.<
-          const formData = new FormData(document.querySelector('.nothingtoseehere'));
+          if (type === 'business') {
+            const user = new DataBaseManager('userdata', uid);
+            console.log('user', user);
+            //  [tempFix] Hier knijpen we de oogjes even dicht >.<
+            const formData = new FormData(document.querySelector('.nothingtoseehere'));
+            console.log('from', formData);
+            //  save the form data in an object
+            const userData = {};
+            for (const data of formData.entries()) {
+              userData[data[0]] = data[1];
+            }
+            console.log('userdata', userData);
 
-          //  save the form data in an object
-          const userData = {};
-          for (const data of formData.entries()) {
-            userData[data[0]] = data[1];
+            //  save the Business names in a seperate Object
+            const registeredBusinesses = {
+              userdata: user.doc,
+              businessName: userData.businessName,
+            };
+
+            //  store/merge the form data in the firestore collection Userdata
+            await user.savedata(userData, true)
+              // store the registeredBusiness names in a seperate firestore collection
+              .then(async () => {
+                const registeredBusiness = new DataBaseManager('BusinessRegistered', uid);
+                await registeredBusiness.BusinessRegistered(registeredBusinesses);
+              });
           }
-          //  save the Business names in a seperate Object
-          const registeredBusinesses = {
-            businessName: userData.businessName,
-          };
 
-          //  store/merge the form data in the firestore collection Userdata
-          await user.savedata(userData, true)
-
-            // store the registeredBusiness names in a seperate firestore collection
-            .then(async () => {
-              const registeredBusiness = new DataBaseManager('BusinessRegistered', uid);
-              await registeredBusiness.BusinessRegistered(registeredBusinesses);
-            });
           if (type === 'visitor') {
             this.router.navigate('/visitorDashboard/');
           } else if (type === 'business') {

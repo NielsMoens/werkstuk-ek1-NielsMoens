@@ -1,17 +1,17 @@
 export default `
 <header class="header_small">
     <ul id="nav">
-        <li><a href="{{headerData.logout}}"><i class="fas fa-sign-out-alt"></i></a></li>
-        <li><a href="/businessProfile">{{headerData.UserName}} <i class="fas fa-user"></i></a></li>
+        <li><a href="{{busDashboard.logout}}"><i class="fas fa-sign-out-alt"></i></a></li>
+        <li><a href="/businessProfile">{{busDashboard.UserName}} <i class="fas fa-user"></i></a></li>
     </ul>
     <h1>{{headerData.title}}</h1>
-    <p class="subtitle__businessDash">{{headerData.subtitle}}</p>
+    <p class="subtitle__businessDash">{{busDashboard.subtitle}}</p>
 </header>
 
 <div class="busDashboard">
     <ul>
         <li>
-            <a href="/businessDashboard/UniqueQRcode">
+            <a href="/businessDashboard/uniquecode">
                 <i class="fas fa-qrcode"></i>
                 <p>create QR-code</p>
             </a>
