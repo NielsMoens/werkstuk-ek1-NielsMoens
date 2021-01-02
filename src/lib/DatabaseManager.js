@@ -2,7 +2,8 @@
  * The compent parent
  */
 
-import firebase from 'firebase';
+// import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 class DataBaseManager {
   constructor(collection, doc) {

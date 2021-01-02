@@ -2,6 +2,8 @@
  * My firebase Config
  */
 import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 export default () => {
 // Your web app's Firebase configuration
