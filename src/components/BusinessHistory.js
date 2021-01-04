@@ -4,6 +4,7 @@
 
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
+import userdata from '../lib/userdata';
 
 class BusinessHistory extends Component {
   constructor() {
@@ -14,16 +15,19 @@ class BusinessHistory extends Component {
     });
   }
 
-  render() {
+  async render() {
     //  create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'BusinessHistory';
+
+    // Get the data of the logged in user
+    const userInfo = await userdata();
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.BusinessHistory({
         logout: '/',
-        UserName: 'Username',
+        UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'visitor',
         info: 'Business History',

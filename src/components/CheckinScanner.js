@@ -5,6 +5,7 @@
 import Component from '../lib/components';
 import DataBaseManager from '../lib/DatabaseManager';
 import Elements from '../lib/Elements';
+import userdata from '../lib/userdata';
 import Qrscanner from '../lib/QrScanner';
 
 class CheckinScanner extends Component {
@@ -30,16 +31,17 @@ class CheckinScanner extends Component {
       });
   }
 
-  render() {
+  async render() {
     //  create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'CheckinScanner';
 
+    const userInfo = await userdata();
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.CheckinScanner({
-        logout: '/',
-        UserName: 'Username',
+        logout: '/visitorDashboard',
+        UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'visitor',
         info: 'Scan QR-code from business:',

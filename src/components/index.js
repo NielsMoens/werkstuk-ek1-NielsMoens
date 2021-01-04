@@ -14,7 +14,6 @@ import Activevisitor from './Activevisitor';
 import Visitorhistory from './Visitorhistory';
 import ProfilInfo from './ProfilInfo';
 import ProfileInfoBus from './ProfilInfoBus';
-import BussinesInfo from './BussinesInfo';
 
 export {
   HomeComponent,
@@ -29,5 +28,4 @@ export {
   Visitorhistory,
   ProfilInfo,
   ProfileInfoBus,
-  BussinesInfo,
 };

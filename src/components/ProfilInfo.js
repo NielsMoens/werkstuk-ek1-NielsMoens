@@ -2,7 +2,6 @@
  * My Home Components
  */
 
-import firebase from 'firebase/app';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import userdata from '../lib/userdata';
@@ -28,7 +27,7 @@ class ProfileInfo extends Component {
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.ProfilInfo({
         logout: '/',
-        UserName: 'Username',
+        UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'visitor',
         info: 'ProfilInfo',

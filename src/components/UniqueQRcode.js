@@ -5,6 +5,7 @@
 import firebase from 'firebase/app';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
+import userdata from '../lib/userdata';
 
 class UniqueQRcode extends Component {
   constructor() {
@@ -20,11 +21,13 @@ class UniqueQRcode extends Component {
     const homeContainer = document.createElement('div');
     homeContainer.className = 'Activevisitor';
 
+    const userInfo = await userdata();
+
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.UniqueQrcode({
-        logout: '/',
-        UserName: 'Username',
+        logout: '/businessDashboard',
+        UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'business',
         info: 'Unique QR-code',

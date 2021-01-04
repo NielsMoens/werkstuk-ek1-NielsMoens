@@ -15,9 +15,7 @@ import {
   ProfilInfo,
   ProfileInfoBus,
   Visitorhistory,
-  BussinesInfo,
 } from './components';
-import ProfilInfoBusiness from './views/templates/ProfilInfoBusiness';
 
 const initApp = () => {
   initFirebase();
@@ -36,7 +34,6 @@ const initApp = () => {
   app.addComponent(new Visitorhistory());
   app.addComponent(new ProfilInfo());
   app.addComponent(new ProfileInfoBus());
-  app.addComponent(new BussinesInfo());
 };
 
 window.addEventListener('load', initApp);

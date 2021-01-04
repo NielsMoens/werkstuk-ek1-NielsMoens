@@ -1,11 +1,11 @@
 /**
  * My Home Components
  */
-import firebase from 'firebase/app';
-import { async } from 'regenerator-runtime';
+
 import Component from '../lib/components';
 import DataBaseManager from '../lib/DatabaseManager';
 import Elements from '../lib/Elements';
+import userdata from '../lib/userdata';
 
 class VisitorDashboard extends Component {
   constructor() {
@@ -16,16 +16,18 @@ class VisitorDashboard extends Component {
     });
   }
 
-  render() {
+  async render() {
     //  create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'visitorDashboard';
+
+    const userInfo = await userdata();
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.visDashboard({
         logout: '/',
-        UserName: 'Username',
+        UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'visitor',
       }),

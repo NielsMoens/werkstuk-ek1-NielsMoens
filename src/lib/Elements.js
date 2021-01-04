@@ -14,7 +14,6 @@ import BusinessHistory from '../views/templates/BusinessHistory';
 import ProfilInfo from '../views/templates/ProfilInfo';
 import ProfileInfoBus from '../views/templates/ProfilInfoBusiness';
 import Visitorhistory from '../views/templates/Visitorhistory';
-import BussinesInfo from '../views/templates/BussinesInfo';
 
 const Handlebars = require('handlebars');
 
@@ -70,11 +69,6 @@ const Elements = {
     const template = Handlebars.compile(Visitorhistory);
     const vishisto = template({ vishistory });
     return vishisto;
-  },
-  BussinesInfo(busInfo) {
-    const template = Handlebars.compile(BussinesInfo);
-    const businessInfo = template({ busInfo });
-    return businessInfo;
   },
 
   generateInput(attributes) {
