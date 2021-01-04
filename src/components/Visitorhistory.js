@@ -10,7 +10,7 @@ class Visitorhistory extends Component {
     super({
       name: 'Visitorhistory',
       model: {},
-      routerPath: '/Visitorhistory',
+      routerPath: '/businessVisitorhistory',
     });
   }
 

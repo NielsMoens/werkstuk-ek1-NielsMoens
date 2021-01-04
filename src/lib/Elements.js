@@ -12,6 +12,7 @@ import UniqueQrcode from '../views/templates/UniQrcode';
 import Activevisitor from '../views/templates/Activevisitor';
 import BusinessHistory from '../views/templates/BusinessHistory';
 import ProfilInfo from '../views/templates/ProfilInfo';
+import ProfileInfoBus from '../views/templates/ProfilInfoBusiness';
 import Visitorhistory from '../views/templates/Visitorhistory';
 import BussinesInfo from '../views/templates/BussinesInfo';
 
@@ -60,6 +61,11 @@ const Elements = {
     const profinfo = template({ profilInfo });
     return profinfo;
   },
+  ProfileInfoBus(profilInfoBusiness) {
+    const template = Handlebars.compile(ProfileInfoBus);
+    const profinfobus = template({ profilInfoBusiness });
+    return profinfobus;
+  },
   Visitorhistory(vishistory) {
     const template = Handlebars.compile(Visitorhistory);
     const vishisto = template({ vishistory });
@@ -99,12 +105,6 @@ const Elements = {
     });
     return button;
   },
-  // createGooglesignin() {
-  //   const img = document.createElement('img');
-  //   img.src = 'src/assets/btn_google_signin_light_pressed_web.png';
-  //   // if (onClick)img.addEventListener('click', (event) => { onClick(event); });
-  //   return img;
-  // },
 
   createHeader({
     size = 1,

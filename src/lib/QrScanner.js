@@ -31,15 +31,12 @@ const QrScanner = async () => new Promise((resolve) => {
             .catch(() => {
             });
         },
-      )
-        .catch((err) => {
-          //  error when startup has failed
-          console.log(err);
-        });
+      );
+      // .catch((err) => {
+      //   //  error when startup has failed
+      //   console.log(err);
+      // });
     }
-  }).catch((err) => {
-    // error when there are no devices
-    console.log(err);
   });
 });
 

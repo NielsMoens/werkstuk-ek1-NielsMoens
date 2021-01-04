@@ -13,6 +13,7 @@ import UniqueQRcode from './UniqueQrcode';
 import Activevisitor from './Activevisitor';
 import Visitorhistory from './Visitorhistory';
 import ProfilInfo from './ProfilInfo';
+import ProfileInfoBus from './ProfilInfoBus';
 import BussinesInfo from './BussinesInfo';
 
 export {
@@ -27,5 +28,6 @@ export {
   Activevisitor,
   Visitorhistory,
   ProfilInfo,
+  ProfileInfoBus,
   BussinesInfo,
 };

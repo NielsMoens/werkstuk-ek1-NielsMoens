@@ -1,9 +1,9 @@
 /**
  * My Home Components
  */
-
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
+import userdata from '../lib/userdata';
 
 class Activevisitor extends Component {
   constructor() {
@@ -14,16 +14,17 @@ class Activevisitor extends Component {
     });
   }
 
-  render() {
+  async render() {
     //  create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'Activevisitor';
 
+    const userInfo = await userdata();
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.Activevisitor({
         logout: '/',
-        UserName: 'Username',
+        UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'visitor',
         info: 'Active visitors',
