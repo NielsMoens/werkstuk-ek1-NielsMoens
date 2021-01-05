@@ -9,7 +9,7 @@ import userdata from '../lib/userdata';
 class BusinessHistory extends Component {
   constructor() {
     super({
-      name: 'visitorDashboard',
+      name: 'BusinessHistory',
       model: {},
       routerPath: '/visitorDashboard/BusinessHistory',
     });
@@ -26,7 +26,7 @@ class BusinessHistory extends Component {
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.BusinessHistory({
-        logout: '/',
+        logout: '/visitorDashboard',
         UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'visitor',

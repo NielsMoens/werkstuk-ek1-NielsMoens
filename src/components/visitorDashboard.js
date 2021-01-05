@@ -49,6 +49,7 @@ class VisitorDashboard extends Component {
       // after all check we 'should' get a business key that can be used to check out
       for (const businessKey of Object.keys(docData)) {
         const businessCheckins = docData[businessKey];
+        console.log('businessCheckins', businessCheckins);
         for (const userDataKey of Object.keys(businessCheckins)) {
           if (!businessCheckins[userDataKey].active || userDataKey !== userId) {
             // eslint-disable-next-line no-continue

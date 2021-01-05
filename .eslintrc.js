@@ -21,5 +21,7 @@ module.exports = {
     'no-restricted-syntax': 0,
     'class-methods-use-this': 0,
     'no-new': 0,
+    'no-continue': 0,
+    'prefer-default-export': 0,
   },
 };
