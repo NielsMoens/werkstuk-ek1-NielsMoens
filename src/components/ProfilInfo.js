@@ -2,9 +2,9 @@
  * My Home Components
  */
 
+import firebase from 'firebase/app';
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
-import userdata from '../lib/userdata';
 import 'regenerator-runtime/runtime';
 
 class ProfileInfo extends Component {
@@ -21,12 +21,28 @@ class ProfileInfo extends Component {
     const homeContainer = document.createElement('div');
     homeContainer.className = 'profileinfoContainer';
 
+    const email = localStorage.getItem('email');
+    const userdata = async () => {
+      let userinfo = {};
+      const data = firebase.firestore().collection('userdata');
+      const snapshot = await data.where('email', '==', email).get();
+      if (snapshot.empty) {
+        console.log('No matching documents.');
+        return null;
+      }
+      snapshot.forEach((doc) => {
+        userinfo = doc.data();
+      });
+      console.log(userinfo);
+      return userinfo;
+    };
+
     const userInfo = await userdata();
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.ProfilInfo({
-        logout: '/',
+        logout: '/visitorDashboard',
         UserName: userInfo?.firstname + userInfo?.lastname,
         title: 'HORECONA',
         subtitle: 'visitor',

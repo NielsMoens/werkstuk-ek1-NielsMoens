@@ -17,7 +17,7 @@ export default `
             </a>
         </li>
         <li>
-            <a href="{{visData.checkout}}">
+            <a onclick="checkout()">
                 <i class="fas fa-running"></i>
                 <p>Check-out</p>
             </a>
@@ -29,7 +29,7 @@ export default `
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="visitorDashboard/profileInfo">
                 <i class="fas fa-edit"></i>
                 <p>Edit User Info</p>
             </a>

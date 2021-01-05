@@ -2,6 +2,7 @@
  * My Home Components
  */
 
+import firebase from 'firebase/app';
 import Component from '../lib/components';
 import DataBaseManager from '../lib/DatabaseManager';
 import Elements from '../lib/Elements';
@@ -22,6 +23,57 @@ class VisitorDashboard extends Component {
     homeContainer.className = 'visitorDashboard';
 
     const userInfo = await userdata();
+    console.log(userInfo);
+    const userId = localStorage.getItem('uid');
+    //
+    const getBusinesKeyForCheckedInUser = async () => {
+      const data = firebase.firestore().collection('saveCheckins');
+      const snapshot = await data.get();
+      if (snapshot.empty) {
+        console.log('No matching documents.');
+        return null;
+      }
+      const docData = {};
+
+      // First of all we map the shit out of this to work with our format since you know firbase...
+      // We set docdata = the current businessKey and give it the correspondending userCheckInData
+      snapshot.forEach((doc) => {
+        docData[doc.id] = doc.data();
+      });
+
+      // after the map we have to get the current user's checked-in bussiness (key to uncheck)
+      // but for this we need two loops
+      // 1) Getting all the user's their Id and data inside the business
+      // 2) getting the current user data & checks to verify it is
+      // checked in & is the logged in user
+      // after all check we 'should' get a business key that can be used to check out
+      for (const businessKey of Object.keys(docData)) {
+        const businessCheckins = docData[businessKey];
+        for (const userDataKey of Object.keys(businessCheckins)) {
+          if (!businessCheckins[userDataKey].active || userDataKey !== userId) {
+            // eslint-disable-next-line no-continue
+            continue;
+          }
+          return businessKey;
+        }
+      }
+      return null;
+    };
+
+    const businesKey = await getBusinesKeyForCheckedInUser();
+    console.log(businesKey);
+
+    const checkout = async () => {
+      if (!businesKey) {
+        alert('You are not checked in yet');
+        return;
+      }
+      const databaseManager = new DataBaseManager('saveCheckins', businesKey);
+      databaseManager.updateData({ userId, active: false, date: new Date() });
+    };
+
+    // Sad fix :(
+    window.checkout = checkout;
 
     // load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
@@ -32,25 +84,7 @@ class VisitorDashboard extends Component {
         subtitle: 'visitor',
       }),
     );
-    const checkout = async (/* businessId */) => {
-      const userId = localStorage.getItem('uid');
-      /* const data = firebase.firestore().collection('saveCheckins').doc(businessId);
-      const snapshot = await data.where('users', '==', userId).get();
-      if (!snapshot) {
-        console.log('user is not checked in');
-      } else { */
-      const databaseManager = new DataBaseManager('saveCheckins', 'sHeLPW0dvNaMJt7bf4ifNgp5OUM2');
-      databaseManager.removeUserFromArray(userId);
-      // }
-    };
-    homeContainer.append(
-      Elements.createButton({
-        textContent: 'check out',
-        onClick: async () => {
-          await checkout();
-        },
-      }),
-    );
+
     // add map provided by mapbox
     document.getElementById('map').className = 'showMap';
 

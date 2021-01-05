@@ -26,7 +26,7 @@ class CheckinScanner extends Component {
         const businessId = atob(message); // to text
         const saveCheckins = new DataBaseManager('saveCheckins', businessId);
         // check if userId already exist @TODO
-        saveCheckins.updateData(userId);
+        saveCheckins.updateData({ userId, active: true, date: new Date() });
         console.log(businessId);
       });
   }

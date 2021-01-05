@@ -18,11 +18,22 @@ class DataBaseManager {
   }
 
   async updateData(data) {
-    firebase.firestore().collection(this.collection).doc(this.doc).update({
-      users: firebase.firestore.FieldValue.arrayUnion(data),
-    })
+    // hack shit to update arrays -> [userId] is the
+    // current user where we set if the user is active with the curresponding
+    // date of checkin or checkout
+    // (if active last element in date array == checkin date else if !active checkout date)
+
+    // first we check if the user exist if so we set the new data & merge it with the old
+    // if there is no user yet, we initially set the user with it's data
+    firebase.firestore().collection(this.collection).doc(this.doc).set({
+      [data.userId]: {
+        active: data.active,
+        dates: firebase.firestore.FieldValue.arrayUnion(data.date),
+      },
+    }, { merge: true })
       .catch(() => {
-        firebase.firestore().collection(this.collection).doc(this.doc).set({ users: [data] });
+        firebase.firestore().collection(this.collection).doc(this.doc)
+          .set({ [data.userId]: { active: data.active, dates: [data.date] } });
       });
   }
 

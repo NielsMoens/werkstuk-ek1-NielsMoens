@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 
-const email = localStorage.getItem('email');
 const userdata = async () => {
+  const email = localStorage.getItem('email');
   let userinfo = {};
   const data = firebase.firestore().collection('userdata');
   const snapshot = await data.where('email', '==', email).get();

@@ -9,7 +9,7 @@ import userdata from '../lib/userdata';
 class BusinessDashboard extends Component {
   constructor() {
     super({
-      name: 'businessDashboard',
+      name: 'BusinessDashboard',
       model: {},
       routerPath: '/businessDashboard',
     });

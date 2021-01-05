@@ -194,6 +194,20 @@ class ExtraData extends Component {
                 const registeredBusiness = new DataBaseManager('BusinessRegistered', uid);
                 await registeredBusiness.BusinessRegistered(registeredBusinesses);
               });
+          } else if (type === 'visitor') {
+            const user = new DataBaseManager('userdata', uid);
+            console.log('user', user);
+            //  [tempFix] Hier knijpen we de oogjes even dicht >.<
+            const formData = new FormData(document.querySelector('form'));
+            console.log('from', formData);
+            //  save the form data in an object
+            const userData = {};
+            for (const data of formData.entries()) {
+              userData[data[0]] = data[1];
+            }
+            console.log('userdata', userData);
+            await user.savedata(userData, true);
+            //  save the Business names in a seperate Object
           }
 
           if (type === 'visitor') {

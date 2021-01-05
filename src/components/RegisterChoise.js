@@ -115,6 +115,7 @@ class RegisterComponent extends Component {
           // first initialize uid in localstorage for future reference
           const userUid = response.user.uid;
           window.localStorage.setItem('uid', userUid);
+          window.localStorage.setItem('email', email);
 
           // Then save the data from that page in the database,
           // based on the uid (primary key) of the user as index
@@ -125,7 +126,7 @@ class RegisterComponent extends Component {
           });
 
           // next component is now ready to load
-          this.router.navigate('/registerPage/extraInfo/');
+          await Promise.resolve(this.router.navigate('/registerPage/extraInfo/'));
         },
       }),
     );
