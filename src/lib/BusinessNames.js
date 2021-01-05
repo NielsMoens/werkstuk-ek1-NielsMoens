@@ -4,7 +4,7 @@
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { log } from 'handlebars';
+// import { log } from 'handlebars';
 
 const BusinessNames = {
   //  Fetch  all the business data from the stad gent API

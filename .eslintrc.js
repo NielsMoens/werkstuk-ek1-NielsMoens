@@ -23,5 +23,6 @@ module.exports = {
     'no-new': 0,
     'no-continue': 0,
     'prefer-default-export': 0,
+    'no-restricted-globals': 0,
   },
 };

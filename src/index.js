@@ -34,6 +34,10 @@ const initApp = () => {
   app.addComponent(new Visitorhistory());
   app.addComponent(new ProfilInfo());
   app.addComponent(new ProfileInfoBus());
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
 };
 
 window.addEventListener('load', initApp);

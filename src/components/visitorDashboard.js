@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * My Home Components
  */
