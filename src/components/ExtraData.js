@@ -48,9 +48,14 @@ class ExtraData extends Component {
     extrainfoContainer.setAttribute('method', 'POST');
     extrainfoContainer.appendChild(
       Elements.createHeader({
-        textContent: 'HORECONA profileInfo',
+        textContent: 'HORECONA',
+        classname: 'head',
       }),
     );
+    const subtitle = document.createElement('p');
+    subtitle.className = 'head__subtitle';
+    subtitle.innerHTML = 'Profile Info';
+    extrainfoContainer.appendChild(subtitle);
 
     // render in the right content for the right kind of users: business or visitor
     // Check the type of visitor that is stored in the local host
@@ -166,6 +171,7 @@ class ExtraData extends Component {
     extrainfoContainer.appendChild(
       Elements.createButton({
         textContent: 'Save & Continue',
+        classname: 'btn',
         onClick: async (event) => {
           event.preventDefault();
           if (type === 'business') {

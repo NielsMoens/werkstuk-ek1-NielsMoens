@@ -10,8 +10,14 @@ export default `
 
 <div class="busDashboard">
    <h2> {{activevisitor.info}} </h2>
-   {{#each activevisitor.resolvedUsers}}
-    <li>{{this.firstname}} {{this.lastname}} {{this.lastDate}}</li>
-  {{/each}}
+   {{#with activevisitor as | activevisitor |}}
+    {{#if activevisitor.resolvedUsers}}
+      {{#each resolvedUsers}}
+        <li>{{this.firstname}} {{this.lastname}} {{this.lastDate}}</li>
+      {{/each}}
+    {{else}}
+      <li>No checkins</li>
+    {{/if}}
+   {{/with}}
 </div>
 `;

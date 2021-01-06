@@ -66,12 +66,16 @@ export const getAllCheckedInBusiness = async (businessId) => {
     if (!businessData[userDataKey].active) {
       continue;
     }
+    console.log(userDataKey);
     const userData = businessData[userDataKey];
+    console.log(userData);
     activeUsers.push({
       id: userDataKey,
       lastDate: new Date(userData.dates[userData.dates.length - 1] * 1000),
     });
   }
+
+  console.log(activeUsers);
 
   return activeUsers;
 };

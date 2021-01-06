@@ -10,8 +10,18 @@ $mainLogin-colors:(
   headColor: white,
   btnloginColor:#474C51,
   formText: #707070,
+  formLine:#c9c9c9b0,
   mainTextColor: white,
   );
+
+$button-colors:(
+  btn-hover: #474C51,
+  border:#C9C9C9,
+  buttonbackgroundColor: #474C51,
+  mainTextColor: white,
+  );
+  
+
 
 $text-font: 'Open Sans',
 sans-serif;

@@ -24,16 +24,19 @@ class Activevisitor extends Component {
     // display the active users from the business
     const businessId = localStorage.getItem('uid');
     const activeUsers = await getAllCheckedInBusiness(businessId);
+    let users;
 
-    /**  Array contains just userId & date ->
+    if (activeUsers) {
+      /**  Array contains just userId & date ->
      *  map the active users to the new format that is used in the Frontend
      * to get the userData (firstname, lastname...),
      * the method to get all the userData is called
      * and getting mapped in a new object with userId & date */
-    const users = activeUsers.map(async (user) => {
-      const userData = await getUserData(user.id);
-      return { ...userData, ...user };
-    });
+      users = activeUsers.map(async (user) => {
+        const userData = await getUserData(user.id);
+        return { ...userData, ...user };
+      });
+    }
 
     /** Since the map of the activeUsers is async, you'll get
     * an array of promises that need to be awaited

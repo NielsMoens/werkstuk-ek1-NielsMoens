@@ -24,13 +24,16 @@ class HomeComponent extends Component {
 
     // create form container for login
     const form = homeContainer.appendChild(
-      Elements.createForm(),
+      Elements.createForm({
+        classname: 'form',
+      }),
     );
 
     //  append from header
     form.appendChild(
       Elements.createHeader({
         textContent: 'HORECONA',
+        classname: 'form__head',
       }),
     );
 
@@ -62,6 +65,7 @@ class HomeComponent extends Component {
     div.appendChild(
       Elements.createButton({
         textContent: 'login',
+        classname: 'btn__buttons',
         onClick: async (event) => {
           event.preventDefault();
           const formData = new FormData(document.querySelector('form'));
@@ -113,6 +117,7 @@ class HomeComponent extends Component {
     div.appendChild(
       Elements.createButton({
         textContent: 'register',
+        classname: 'btn__buttons',
         onClick: (event) => {
           event.preventDefault();
           this.router.navigate('/registerPage/');
@@ -120,9 +125,10 @@ class HomeComponent extends Component {
       }),
     );
 
-    div.appendChild(
+    form.appendChild(
       Elements.createButton({
         textContent: 'Sign In With Google Account',
+        classname: 'btn__buttons',
         onClick: async () => {
           const provider = new firebase.auth.GoogleAuthProvider();
           const response = await firebase.auth().signInWithPopup(provider);

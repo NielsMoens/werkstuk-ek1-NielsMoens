@@ -8,7 +8,72 @@
 @use '../abstracts/mediamixins'as media;
 
 
-.showMap {
-    width: 400px;
+body {
+  .showMap {
+    width: 380px;
     height: 300px;
+  }
+
+  background-color:#404040;
+
+  #appContainer {
+    .whitespace {
+      padding-top: 20px;
+      background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+      height: 40px;
+    }
+    #nav{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: row;
+      padding-right: 40px;
+      font-size: 20px;
+      background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+      color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+    }
+
+    h1, .subtitle_visitorDashboard {
+      color: map-get($map: vars.$mainLogin-colors, $key: headColor);
+      text-align: center;
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    input {
+      width: 80%;
+      padding: 20px 10px;
+      margin: 8px;
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 1px solid map-get($map: vars.$mainLogin-colors, $key: formLine);
+      background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
+    }
+
+    .btn-container {
+      padding-top: 30px;
+    }
+
+    .buttons {
+      background-color: map-get($map: vars.$button-colors, $key: buttonbackgroundColor);
+      border: 1px solid map-get($map: vars.$button-colors, $key: border);
+      border-radius: 12px;
+      color: white;
+      padding: 15px 32px;
+      margin: 4000px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+
+    }
+
+    .buttons:hover {
+      background-color: map-get($map: vars.$button-colors, $key: btn-hover);
+    }
+  }
 }

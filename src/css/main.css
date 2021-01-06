@@ -339,6 +339,49 @@ body {
   background-color: white;
 }
 
+input, input[type=number] {
+  color: white;
+  width: 80%;
+  padding: 20px 10px;
+  margin: 8px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #c9c9c9b0;
+  background-color: #404040;
+  background-color: none !important;
+}
+
+button {
+  background-color: #474C51;
+  border: 1px solid #C9C9C9;
+  border-radius: 12px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 40px;
+}
+
+button:hover {
+  background-color: #474C51;
+}
+
+.head {
+  margin: 0;
+  padding: 0;
+}
+.head__subtitle {
+  margin: 0;
+  padding: 0;
+}
+
 .text-left {
   text-align: left;
 }
@@ -395,31 +438,29 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-body {
-  background-color: #404040;
-  color: #404040;
-}
-body h1 {
-  color: white;
-}
-body #appContainer {
-  padding-bottom: 40px;
-  background-color: #404040;
-}
 body #appContainer form {
+  padding-bottom: 60px;
+  background-color: #404040;
+  height: 100vh;
+  width: 100;
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #404040;
 }
-body #appContainer form h1 {
+body #appContainer form .form__head {
   color: white;
+  padding-bottom: 40px;
 }
-body h2 {
-  color: white;
-}
-body .hide {
+body #appContainer form .hide {
   display: none !important;
+}
+
+.userChoice {
+  display: flex;
+  text-align: center;
+  padding: 20px;
 }
 
 label {
@@ -430,9 +471,63 @@ body h1, body p, body a, body li {
   color: white;
 }
 
-.showMap {
-  width: 400px;
+body {
+  background-color: #404040;
+}
+body .showMap {
+  width: 380px;
   height: 300px;
+}
+body #appContainer .whitespace {
+  padding-top: 20px;
+  background-color: #404040;
+  height: 40px;
+}
+body #appContainer #nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-right: 40px;
+  font-size: 20px;
+  background-color: #404040;
+  color: #404040;
+}
+body #appContainer h1, body #appContainer .subtitle_visitorDashboard {
+  color: white;
+  text-align: center;
+}
+body #appContainer .hide {
+  display: none !important;
+}
+body #appContainer input {
+  width: 80%;
+  padding: 20px 10px;
+  margin: 8px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #c9c9c9b0;
+  background-color: #404040;
+}
+body #appContainer .btn-container {
+  padding-top: 30px;
+}
+body #appContainer .buttons {
+  background-color: #474C51;
+  border: 1px solid #C9C9C9;
+  border-radius: 12px;
+  color: white;
+  padding: 15px 32px;
+  margin: 4000px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+body #appContainer .buttons:hover {
+  background-color: #474C51;
 }
 
 /*# sourceMappingURL=main.css.map */

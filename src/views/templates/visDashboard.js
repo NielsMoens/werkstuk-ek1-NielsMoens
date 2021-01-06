@@ -1,14 +1,14 @@
 export default `
 <header class="header_small">
-    <ul id="nav">
+    <ul id="header__nav">
         <li><a href="{{visData.logout}}"><i class="fas fa-sign-out-alt"></i></a></li>
         <li><a href="/visitorDashboard/profileInfo">{{visData.UserName}}<i class="fas fa-user"></i></a></li>
     </ul>
     <h1>{{visData.title}}</h1>
-    <p class="subtitle__businessDash">{{visData.subtitle}}</p>
+    <p class="subtitle__visitorDashboard">{{visData.subtitle}}</p>
 </header>
 
-<div class="busDashboard">
+<div class="visitorDashboard">
     <ul>
         <li>
             <a href="/visitorDashboard/CheckinScanner">

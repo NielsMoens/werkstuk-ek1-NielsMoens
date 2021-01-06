@@ -8,7 +8,7 @@
     "build": "parcel build src/index.html --out-dir build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "staticFiles":{
+  "staticFiles": {
     "staticPath": "public"
   },
   "keywords": [],

@@ -4,6 +4,7 @@
  * */
 
 import '../sass/main.scss';
+import Handlebars from 'handlebars';
 import handlebarsHeader from '../views/templates/handlebarsHeader';
 import busDashboardHeader from '../views/templates/busDashboardHeader';
 import visDashboard from '../views/templates/visDashboard';
@@ -15,7 +16,10 @@ import ProfilInfo from '../views/templates/ProfilInfo';
 import ProfileInfoBus from '../views/templates/ProfilInfoBusiness';
 import Visitorhistory from '../views/templates/Visitorhistory';
 
-const Handlebars = require('handlebars');
+Handlebars.registerHelper('isdefined', (value) => {
+  console.log('value', value);
+  return value !== undefined;
+});
 
 const Elements = {
   //  handlebars elements
@@ -79,8 +83,11 @@ const Elements = {
     return input;
   },
 
-  createForm() {
+  createForm({
+    classname = '',
+  }) {
     const form = document.createElement('form');
+    form.className = classname;
     return form;
   },
   createDiv() {
@@ -91,9 +98,11 @@ const Elements = {
   createButton({
     textContent = '',
     onClick = null,
+    classname = '',
   }) {
     const button = document.createElement('button');
     button.textContent = textContent;
+    button.className = classname;
     if (onClick) button.addEventListener('click', (event) => {
       onClick(event);
     });
@@ -103,10 +112,12 @@ const Elements = {
   createHeader({
     size = 1,
     textContent = '',
+    classname = '',
   }) {
     if (size < 1 || size > 6) return null;
     const header = document.createElement(`h${size}`);
     header.textContent = textContent;
+    header.className = classname;
     return header;
   },
 

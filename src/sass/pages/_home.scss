@@ -8,34 +8,28 @@
 @use '../abstracts/mediamixins'as media;
 
 body {
-   background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
-   ;
-   color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
-
-   h1 {
-      color: white;
-   }
-
-   #appContainer {
-      padding-bottom: 40px;
+  #appContainer {
+    form {
+      padding-bottom: 60px;
+      background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
+      height: 100vh;
+      width: 100;
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
 
-      form {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
-
-         h1 {
-            color: map-get($map: vars.$mainLogin-colors, $key: headColor);
-         }
+      .form__head {
+        color: map-get($map: vars.$mainLogin-colors, $key: headColor);
+        padding-bottom: 40px;
       }
-   }
 
-   h2{
-      color: white;
-   }
-   .hide{
-      display: none !important;
-   }
+      .hide {
+        display: none !important;
+      }
+    }
+  }
+
+
 }

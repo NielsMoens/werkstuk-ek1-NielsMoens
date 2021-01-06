@@ -21,9 +21,11 @@ class RegisterComponent extends Component {
     //  create a home container
     const registerContainer = document.createElement('form');
     registerContainer.setAttribute('method', 'POST');
+    registerContainer.className = 'form';
     registerContainer.appendChild(
       Elements.createHeader({
         textContent: 'HORECONA',
+        classname: 'header',
       }),
     );
 
@@ -50,8 +52,11 @@ class RegisterComponent extends Component {
 
     // create radio buttons for user choice
     const radioParent = document.createElement('section');
+    radioParent.className = 'userChoice';
     const visitor = document.createElement('div');
+    visitor.className = 'userChoice__visitorContainer';
     const business = document.createElement('div');
+    business.className = 'userChoice__businessContainer';
 
     // append radio button visitor
     visitor.appendChild(
@@ -96,6 +101,7 @@ class RegisterComponent extends Component {
     registerContainer.appendChild(
       Elements.createButton({
         textContent: 'Register & Continue',
+        classname: 'btn__buttons',
         onClick: async (event) => {
           event.preventDefault();
           const formData = new FormData(document.querySelector('form'));
