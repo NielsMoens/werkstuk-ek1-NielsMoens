@@ -1,7 +1,7 @@
 /**
- * My Home Components
+ * Business Dashboard Component
  */
-// import firebase from 'firebase/app';
+
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import userdata from '../lib/userdata';
@@ -16,13 +16,14 @@ class BusinessDashboard extends Component {
   }
 
   async render() {
-    //  create a home container
+    //  Create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'businessDashboard';
 
+    // Get the data of the logged in user
     const userInfo = await userdata();
 
-    // load in content with handlebars
+    // Load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.busDashboardHeader({
         logout: '/',

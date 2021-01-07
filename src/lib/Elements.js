@@ -1,7 +1,6 @@
 /**
  * My Elements helper
- *
- * */
+ */
 
 import '../sass/main.scss';
 import Handlebars from 'handlebars';
@@ -28,7 +27,6 @@ const Elements = {
     const header = template({ headerData });
     return header;
   },
-
   busDashboardHeader(busDashboard) {
     const template = Handlebars.compile(busDashboardHeader);
     const businessDashboard = template({ busDashboard });
@@ -75,6 +73,7 @@ const Elements = {
     return vishisto;
   },
 
+  // Item Factory
   generateInput(attributes) {
     const input = document.createElement('input');
     Object.keys(attributes).forEach((attrib) => {

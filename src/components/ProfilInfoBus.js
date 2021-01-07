@@ -1,5 +1,5 @@
 /**
- * My Home Components
+ * Profile Info business Component
  */
 
 import firebase from 'firebase/app';
@@ -17,10 +17,15 @@ class ProfileInfoBus extends Component {
   }
 
   async render() {
-    //  create a home container
+    //  Create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'profileinfoContainer';
 
+    /**
+     *  Get the users email form the local storage
+     *  Check in the userdata collection if there is a matching email
+     *  Then Load in the userdata on the profile Info Page
+     */
     const email = localStorage.getItem('email');
     const userdata = async () => {
       let userinfo = {};
@@ -33,12 +38,13 @@ class ProfileInfoBus extends Component {
       snapshot.forEach((doc) => {
         userinfo = doc.data();
       });
-      console.log(userinfo);
       return userinfo;
     };
+
+    // Get the data of the logged in user
     const userInfo = await userdata();
 
-    // load in content with handlebars
+    // Load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.ProfileInfoBus({
         logout: '/businessDashboard',

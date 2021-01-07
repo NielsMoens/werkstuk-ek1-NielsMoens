@@ -9,7 +9,7 @@
 
 .unicode {
   &__title {
-        color: map-get($map: vars.$main-dashboard-colors, $key: mainTextColor);
+    color: map-get($map: vars.$main-dashboard-colors, $key: mainTextColor);
     padding-left: 30px;
     margin-top: 30px;
   }

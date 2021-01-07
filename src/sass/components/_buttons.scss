@@ -10,7 +10,7 @@ button {
     background-color: map-get($map: vars.$button-colors, $key: buttonbackgroundColor);
     border: 1px solid map-get($map: vars.$button-colors, $key: border);
     border-radius: 12px;
-    color: white;
+    color: map-get($map: vars.$button-colors, $key: mainTextColor);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;

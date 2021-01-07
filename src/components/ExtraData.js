@@ -1,5 +1,5 @@
 /**
- * My ExtraData Components
+ * My Extra Data Component
  */
 
 import Component from '../lib/components';
@@ -19,32 +19,30 @@ class ExtraData extends Component {
     this.businessLoaded = false;
   }
 
+  // Load the all the Businesses
   async loadBusinessNames() {
     if (!this.businessLoaded) {
       await BusinessNames.CheckRegistered()
         .then((data) => {
           this.model.businessNames = data;
-          console.log((data));
         });
     }
   }
 
   async render() {
-    // first what we need is the reference of the user aka the uid
+    // First what we need is the reference of the user aka the uid
     const uid = localStorage.getItem('uid');
 
-    // create the same data reader as the old component
+    // Create the same data reader as the old component
     const userDoc = new DataBaseManager('userdata', uid);
 
     // Then you can get the stored type from the userData stored for that specific user
     // (? = love the es next to filter directly on undefined's)
     const collectionData = await userDoc.getCollectionData();
     const type = collectionData.data()?.registerChoice;
-    console.log('userdoc', type);
 
-    //  create container
+    // Create extrainfo container
     const extrainfoContainer = document.createElement('form');
-    // extrainfoContainer.className = 'nothingtoseehere';
     extrainfoContainer.setAttribute('method', 'POST');
     extrainfoContainer.appendChild(
       Elements.createHeader({
@@ -57,11 +55,10 @@ class ExtraData extends Component {
     subtitle.innerHTML = 'Profile Info';
     extrainfoContainer.appendChild(subtitle);
 
-    // render in the right content for the right kind of users: business or visitor
+    // Render in the right content for the right kind of users: business or visitor
     // Check the type of visitor that is stored in the local host
-    // then load the right profile info form elements
+    // Then load the right profile info form elements
     if (type === 'visitor') {
-      console.log('has visitor');
       //  append visitor container
       extrainfoContainer.appendChild(
         Elements.generateInput({
@@ -99,7 +96,7 @@ class ExtraData extends Component {
         }),
       );
     } else if (type === 'business') {
-      //  create a dropdown with all the business names fetched form the stadgent API
+      //  Create a dropdown with all the business names fetched form the stadgent API
       const dropdown = document.createElement('select');
       dropdown.setAttribute('name', 'businessName');
       dropdown.className = 'form__businessNames';
@@ -168,7 +165,7 @@ class ExtraData extends Component {
       );
     }
 
-    // create & append button -> store all the data in firestore
+    // Create & append button -> store all the data in firestore
     extrainfoContainer.appendChild(
       Elements.createButton({
         textContent: 'Save & Continue',
@@ -177,44 +174,40 @@ class ExtraData extends Component {
           event.preventDefault();
           if (type === 'business') {
             const user = new DataBaseManager('userdata', uid);
-            console.log('user', user);
-            //  [tempFix] Hier knijpen we de oogjes even dicht >.<
             const formData = new FormData(document.querySelector('.nothingtoseehere'));
-            console.log('from', formData);
-            //  save the form data in an object
+
+            //  Save the form data in an object
             const userData = {};
             for (const data of formData.entries()) {
               userData[data[0]] = data[1];
             }
-            console.log('userdata', userData);
 
-            //  save the Business names in a seperate Object
+            //  Save the Business names in a seperate Object
             const registeredBusinesses = {
               userdata: user.doc,
               businessName: userData.businessName,
             };
 
-            //  store/merge the form data in the firestore collection Userdata
+            /**
+             *  Store/merge the form data in the firestore collection Userdata
+             *  Then store the registeredBusiness names in a seperate firestore collection
+            */
             await user.savedata(userData, true)
-              // store the registeredBusiness names in a seperate firestore collection
               .then(async () => {
                 const registeredBusiness = new DataBaseManager('BusinessRegistered', uid);
                 await registeredBusiness.BusinessRegistered(registeredBusinesses);
               });
           } else if (type === 'visitor') {
             const user = new DataBaseManager('userdata', uid);
-            console.log('user', user);
-            //  [tempFix] Hier knijpen we de oogjes even dicht >.<
             const formData = new FormData(document.querySelector('form'));
-            console.log('from', formData);
+
             //  save the form data in an object
             const userData = {};
             for (const data of formData.entries()) {
               userData[data[0]] = data[1];
             }
-            console.log('userdata', userData);
-            await user.savedata(userData, true);
             //  save the Business names in a seperate Object
+            await user.savedata(userData, true);
           }
 
           if (type === 'visitor') {

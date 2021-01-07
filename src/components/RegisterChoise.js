@@ -1,5 +1,5 @@
 /**
- * My Products Components
+ * RegisterChoice Component
  */
 
 import 'regenerator-runtime/runtime';
@@ -18,7 +18,7 @@ class RegisterComponent extends Component {
   }
 
   render() {
-    //  create a home container
+    //  Create a home container
     const registerContainer = document.createElement('form');
     registerContainer.setAttribute('method', 'POST');
     registerContainer.className = 'form';
@@ -29,7 +29,7 @@ class RegisterComponent extends Component {
       }),
     );
 
-    //  append form email
+    //  Create and append email inputfield
     registerContainer.appendChild(
       Elements.generateInput({
         name: 'email',
@@ -39,10 +39,9 @@ class RegisterComponent extends Component {
       }),
     );
 
-    // append form email
+    //  Create and Append password inputfield
     registerContainer.appendChild(
       Elements.generateInput({
-        // NAME IS IMPORTANT
         name: 'password',
         id: 'password',
         placeholder: 'password',
@@ -50,7 +49,7 @@ class RegisterComponent extends Component {
       }),
     );
 
-    // create radio buttons for user choice
+    //  Create radio buttons for user choice
     const radioParent = document.createElement('section');
     radioParent.className = 'form__userChoice';
     const visitor = document.createElement('div');
@@ -58,7 +57,7 @@ class RegisterComponent extends Component {
     const business = document.createElement('div');
     business.className = 'userChoice__businessContainer';
 
-    // append radio button visitor
+    //  Create and append radio button visitor
     visitor.appendChild(
       Elements.generateInput({
         name: 'choice',
@@ -69,7 +68,7 @@ class RegisterComponent extends Component {
       }),
     );
 
-    // append radio button business
+    //  Create and append radio button business
     business.appendChild(
       Elements.generateInput({
         name: 'choice',
@@ -80,7 +79,7 @@ class RegisterComponent extends Component {
       }),
     );
 
-    // create label for radio buttons
+    //  Create labels for radio buttons
     const labelB = document.createElement('label');
     labelB.innerHTML = 'Business';
     labelB.setAttribute('for', 'business');
@@ -91,13 +90,13 @@ class RegisterComponent extends Component {
     labelV.setAttribute('for', 'visitor');
     visitor.appendChild(labelV);
 
-    // append radiobuttons label to parent
+    // Append radiobuttons label to parent
     radioParent.appendChild(visitor);
     radioParent.appendChild(business);
 
     registerContainer.appendChild(radioParent);
 
-    // create & append button -> store all the data in firestore
+    // Create & append button -> store all the data in firestore
     registerContainer.appendChild(
       Elements.createButton({
         textContent: 'Register & Continue',
@@ -113,12 +112,11 @@ class RegisterComponent extends Component {
             password,
           });
           const response = await auth.register(email, password);
-          console.log(response);
           if (!response) {
-            // @TODO Show error
             return;
           }
-          // first initialize uid in localstorage for future reference
+
+          // First initialize uid in localstorage for future reference
           const userUid = response.user.uid;
           window.localStorage.setItem('uid', userUid);
           window.localStorage.setItem('email', email);
@@ -131,12 +129,12 @@ class RegisterComponent extends Component {
             registerChoice,
           });
 
-          // next component is now ready to load
+          // Next component is now ready to load
           await Promise.resolve(this.router.navigate('/registerPage/extraInfo/'));
         },
       }),
     );
-    // return the home container
+    // Return the registerContainer
     return registerContainer;
   }
 }

@@ -4,7 +4,6 @@
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-// import { log } from 'handlebars';
 
 const BusinessNames = {
   //  Fetch  all the business data from the stad gent API
@@ -43,8 +42,7 @@ const BusinessNames = {
           });
       });
   }),
-
-  // Special thanks to Kobe for helping
+  // Get all the registered businesses
   getRegistered: async () => new Promise((resolve) => {
     const url = 'https://data.stad.gent/api/records/1.0/search/?dataset=koop-lokaal-horeca&q=&rows=420&facet=postcode&facet=gemeente&refine.postcode=9000';
     fetch(url)

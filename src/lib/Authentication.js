@@ -1,4 +1,7 @@
-// import firebase from 'firebase';
+/*
+ * Login en register Authentication
+ */
+
 import firebase from 'firebase/app';
 
 export default class Authentication {

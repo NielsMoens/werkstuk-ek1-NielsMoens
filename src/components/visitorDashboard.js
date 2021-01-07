@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 /**
- * My Home Components
+ * Visitor Dashboard Component
  */
 
 import firebase from 'firebase/app';
@@ -21,14 +19,16 @@ class VisitorDashboard extends Component {
   }
 
   async render() {
-    //  create a home container
+    //  Create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'visitorDashboard-container';
 
+    // Get the data of the logged in user
     const userInfo = await userdata();
-    console.log(userInfo);
+
     const userId = localStorage.getItem('uid');
-    //
+
+    //  Get the business keys for the checked in user
     const getBusinesKeyForCheckedInUser = async () => {
       const data = firebase.firestore().collection('saveCheckins');
       const snapshot = await data.get();
@@ -38,21 +38,23 @@ class VisitorDashboard extends Component {
       }
       const docData = {};
 
-      // First of all we map the shit out of this to work with our format since you know firbase...
-      // We set docdata = the current businessKey and give it the correspondending userCheckInData
+      /**
+       *  Map over this of this to work with what is in this since you know firbase...
+       *  Set docdata = the current businessKey and give it the correspondending userCheckInData
+       */
       snapshot.forEach((doc) => {
         docData[doc.id] = doc.data();
       });
 
-      // after the map we have to get the current user's checked-in bussiness (key to uncheck)
-      // but for this we need two loops
-      // 1) Getting all the user's their Id and data inside the business
-      // 2) getting the current user data & checks to verify it is
-      // checked in & is the logged in user
-      // after all check we 'should' get a business key that can be used to check out
+      /**
+       *  After the map get the current user's checked-in bussiness (key to uncheck)
+       *  but for this we need two loops:
+       *  1) Getting all the user's their Id and data inside the business
+       *  2) Getting the current user data & checks to verify it is checked in & the logged in user
+       *  After all checking >.< ,we get a business key that can be used to check out
+       */
       for (const businessKey of Object.keys(docData)) {
         const businessCheckins = docData[businessKey];
-        console.log('businessCheckins', businessCheckins);
         for (const userDataKey of Object.keys(businessCheckins)) {
           if (!businessCheckins[userDataKey].active || userDataKey !== userId) {
             // eslint-disable-next-line no-continue
@@ -65,8 +67,12 @@ class VisitorDashboard extends Component {
     };
 
     const businesKey = await getBusinesKeyForCheckedInUser();
-    console.log(businesKey);
 
+    /**
+     *  First check if the user is checkin in a business, if not -> alert user to checkin in first
+     *  Then if the users checks out, change the 'active' state
+     *  in the 'saveCheckins' collection to false and add a new date
+     */
     const checkout = async () => {
       if (!businesKey) {
         alert('You are not checked in yet');
@@ -75,11 +81,9 @@ class VisitorDashboard extends Component {
       const databaseManager = new DataBaseManager('saveCheckins', businesKey);
       databaseManager.updateData({ userId, active: false, date: new Date() });
     };
-
-    // Sad fix :(
     window.checkout = checkout;
 
-    // load in content with handlebars
+    // Load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.visDashboard({
         logout: '/',
@@ -89,7 +93,7 @@ class VisitorDashboard extends Component {
       }),
     );
 
-    // add map provided by mapbox
+    // Add map provided by mapbox
     document.getElementById('map').className = 'showMap';
 
     // CDN's are injected on the window by default since you import the script in the main index
@@ -102,7 +106,6 @@ class VisitorDashboard extends Component {
       zoom: 9, // starting zoom
     });
     map.addControl(
-      // eslint-disable-next-line no-undef
       new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true,
@@ -122,7 +125,7 @@ class VisitorDashboard extends Component {
               limit: 1,
             })
             .send()
-            // eslint-disable-next-line no-loop-func
+            // Set markers on the mapbox map
             .then((mapresponse) => {
               if (mapresponse && mapresponse.body
                 && mapresponse.body.features

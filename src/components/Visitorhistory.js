@@ -1,5 +1,5 @@
 /**
- * My Home Components
+ * Visitor History Component
  */
 
 import Component from '../lib/components';

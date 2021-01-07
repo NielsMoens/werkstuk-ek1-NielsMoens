@@ -1,5 +1,5 @@
 /**
- * My Home Components
+ * Profile Info Visitor Component
  */
 
 import firebase from 'firebase/app';
@@ -21,6 +21,11 @@ class ProfileInfo extends Component {
     const homeContainer = document.createElement('div');
     homeContainer.className = 'profileinfoContainer';
 
+    /**
+     *  Get the users email form the local storage
+     *  Check in the userdata collection if there is a matching email
+     *  Then Load in the userdata on the profile Info Page
+     */
     const email = localStorage.getItem('email');
     const userdata = async () => {
       let userinfo = {};
@@ -33,7 +38,6 @@ class ProfileInfo extends Component {
       snapshot.forEach((doc) => {
         userinfo = doc.data();
       });
-      console.log(userinfo);
       return userinfo;
     };
 

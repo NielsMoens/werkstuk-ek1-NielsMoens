@@ -1,5 +1,5 @@
 /**
- * My Home Components
+ * Checkin Scanner Component
  */
 
 import firebase from 'firebase/app';
@@ -21,53 +21,42 @@ class CheckinScanner extends Component {
     });
   }
 
+  /**
+   *  Load the QR-code scanner
+   *  Check if the user is not checkin somewhere else, if so-> set active=false
+   *  When the qr code is scanned update the users active state to true in the database
+   * */
   async qrscanner() {
     await Qrscanner()
       .then(async (message) => {
         const userId = localStorage.getItem('uid');
         const businessId = atob(message); // to text
         const saveCheckins = new DataBaseManager('saveCheckins', businessId);
-        // check if userId already exist @TODO
 
         await disableActiveCheckinsForUser(userId);
 
         saveCheckins.updateData({ userId, active: true, date: new Date() });
-        console.log(businessId);
       });
   }
 
   async render() {
     const CheckIfUserExists = async () => {
-      // const userId = localStorage.getItem('uid');
       const checkinData = firebase.firestore().collection('saveCheckins');
       const snapshot = await checkinData.get();
       const userinfo = {};
       snapshot.forEach((doc) => {
         userinfo[doc.id] = doc.data();
       });
-      console.log('snap', userinfo);
-      // if user is present in a previously check in business,
-      // set active to false
-      // for (const uid of Object.keys(userinfo)) {
-      //   const uidPresent = userinfo[uid];
-      //   console.log('uidpresent', uidPresent);
-      //   if (uidPresent instanceof (userId)) {
-      //     console.log('User is pressent ergens anders');
-      //   }
-      // }
-
-      // if (userId === userinfo) {
-      //   console.log('User is pressent ergens anders');
-      // }
     };
+    // eslint-disable-next-line no-unused-vars
     const userInPressent = await CheckIfUserExists();
-    console.log(userInPressent);
-    //  create a home container
+
+    //  Create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'CheckinScanner';
 
     const userInfo = await userdata();
-    // load in content with handlebars
+    // Load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.CheckinScanner({
         logout: '/visitorDashboard',
@@ -78,6 +67,7 @@ class CheckinScanner extends Component {
       }),
     );
 
+    //  Create container for the scanner
     const scanner = document.createElement('div');
     scanner.id = 'reader';
     homeContainer.appendChild(scanner);

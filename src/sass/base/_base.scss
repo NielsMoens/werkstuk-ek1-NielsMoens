@@ -6,26 +6,7 @@
 @use 'sass:map';
 
 body {
-  background-color: #404040;
+  background-color:map-get($map: vars.$main-dashboard-colors, $key: cardTextColor);
 }
 
 
-
-
-/**
-* Inputs 
-*/
-
-input,
-input[type="number"] {
-  color: white;
-  width: 80%;
-  padding: 20px 10px;
-  margin: 8px;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid map-get($map: vars.$mainLogin-colors, $key: formLine);
-  background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
-  background-color: none !important;
-
-}

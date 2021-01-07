@@ -1,8 +1,9 @@
-import Router from '../Router';
-
 /**
  * The compent parent
  */
+
+import Router from '../Router';
+
 class Component {
   constructor({
     name, model, routerPath = null,

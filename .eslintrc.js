@@ -25,5 +25,8 @@ module.exports = {
     'prefer-default-export': 0,
     'no-restricted-globals': 0,
     'no-alert': 0,
+    'no-undef': 0,
+    'no-unused-vars': 0,
+    'no-loop-func': 0, // set this to 0 for mapmox
   },
 };

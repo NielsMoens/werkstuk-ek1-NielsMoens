@@ -1,10 +1,10 @@
 /**
- * My Home Components
+ * Activevisitor Component
  */
+
 import Component from '../lib/components';
 import Elements from '../lib/Elements';
 import userdata from '../lib/userdata';
-
 import { getAllCheckedInBusiness, getUserData } from '../lib/utils';
 
 class Activevisitor extends Component {
@@ -17,18 +17,18 @@ class Activevisitor extends Component {
   }
 
   async render() {
-    //  create a home container
+    //  Create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'Activevisitor';
 
-    // display the active users from the business
+    // Display the active users from the business
     const businessId = localStorage.getItem('uid');
     const activeUsers = await getAllCheckedInBusiness(businessId);
     let users;
 
     if (activeUsers) {
       /**  Array contains just userId & date ->
-     *  map the active users to the new format that is used in the Frontend
+     * map the active users to the new format that is used in the Frontend
      * to get the userData (firstname, lastname...),
      * the method to get all the userData is called
      * and getting mapped in a new object with userId & date */
@@ -46,7 +46,8 @@ class Activevisitor extends Component {
     const resolvedUsers = await Promise.all(users);
 
     const userInfo = await userdata();
-    // load in content with handlebars
+
+    // Load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.Activevisitor({
         logout: '/businessDashboard',
@@ -58,7 +59,7 @@ class Activevisitor extends Component {
       }),
     );
 
-    // return the home container
+    // Return the home container
     return homeContainer;
   }
 }

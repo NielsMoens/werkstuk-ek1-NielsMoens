@@ -1,7 +1,9 @@
+/**
+ * Utility Functions
+ */
+
 import firebase from 'firebase/app';
 import DataBaseManager from './DatabaseManager';
-
-/* eslint-disable import/prefer-default-export */
 
 // When checking into a new business we have to disable the old checkins
 export const disableActiveCheckinsForUser = async (userId) => {
@@ -20,7 +22,8 @@ export const disableActiveCheckinsForUser = async (userId) => {
 
   /**  Loop over all the registered businesses
    *   to check if the user exists
-   *   & is active -> set active false and save the new date */
+   *   & is active -> set active false and save the new date
+   */
   for (const businessKey of Object.keys(docData)) {
     const businessCheckins = docData[businessKey];
     for (const userDataKey of Object.keys(businessCheckins)) {
@@ -32,7 +35,7 @@ export const disableActiveCheckinsForUser = async (userId) => {
   }
 };
 
-// getting all the checked users from the selected business (businessId)
+// Getting all the checked users from the selected business (businessId)
 export const getAllCheckedInBusiness = async (businessId) => {
   const data = firebase.firestore().collection('saveCheckins');
   const snapshot = await data.get();

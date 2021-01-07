@@ -1,5 +1,5 @@
 /**
- * My Home Components
+ * Home Component
  */
 
 import 'regenerator-runtime/runtime';
@@ -18,18 +18,17 @@ class HomeComponent extends Component {
   }
 
   render() {
-    //  create a home container
+    //  Create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'login';
 
-    // create form container for login
+    //  Create form container for login
     const form = homeContainer.appendChild(
       Elements.createForm({
         classname: 'form',
       }),
     );
 
-    //  append from header
     form.appendChild(
       Elements.createHeader({
         textContent: 'HORECONA',
@@ -37,7 +36,6 @@ class HomeComponent extends Component {
       }),
     );
 
-    //  append from header
     form.appendChild(
       Elements.generateInput({
         name: 'email',
@@ -49,7 +47,6 @@ class HomeComponent extends Component {
 
     form.appendChild(
       Elements.generateInput({
-        // NAME IS IMPORTANT
         name: 'password',
         id: 'password',
         placeholder: 'password',
@@ -57,11 +54,16 @@ class HomeComponent extends Component {
       }),
     );
 
+    //  Created button container
     const div = document.createElement('div');
     div.className = 'btn';
     form.appendChild(div);
 
-    //  append a button
+    /**
+     *  Append login button
+     *  OnClick get the data from the form and check the user in firestore Authentication
+     *  Then set the user id in the local storage
+     */
     div.appendChild(
       Elements.createButton({
         textContent: 'login',
@@ -76,10 +78,8 @@ class HomeComponent extends Component {
             email,
             password,
           });
-          console.log('email', email);
           const response = await auth.login(email, password);
           if (!response) {
-            // @TODO Show error
             return;
           }
 
@@ -94,26 +94,23 @@ class HomeComponent extends Component {
             return;
           }
 
-          // save the registerType to check which kind of user is trying to login
+          // Save the registerType to check which kind of user is trying to login
           // Then redirect the user to the right dashbaord
           let registerType = '';
           snapshot.forEach((doc) => {
-            console.log('registerChoice', doc.get('registerChoice'));
             registerType = doc.get('registerChoice');
           });
-          console.log(registerType);
 
           if (registerType === 'business') {
-            console.log('joepieee BUSINESS', registerType);
             this.router.navigate('/businessDashboard');
           } else if (registerType === 'visitor') {
-            console.log('joepieee visitor', registerType);
             this.router.navigate('/visitorDashboard');
           }
         },
       }),
     );
 
+    //  Create and append a button that redirects you to the registerPage
     div.appendChild(
       Elements.createButton({
         textContent: 'register',
@@ -125,6 +122,7 @@ class HomeComponent extends Component {
       }),
     );
 
+    //  Create and append a button the sign in with a google account
     form.appendChild(
       Elements.createButton({
         textContent: 'Sign In With Google Account',
@@ -133,8 +131,7 @@ class HomeComponent extends Component {
           const provider = new firebase.auth.GoogleAuthProvider();
           const response = await firebase.auth().signInWithPopup(provider);
           if (!response) {
-            // @TODO Show error
-            console.log('aiiiii, gene response');
+            console.log('aiiiii, no response');
             return;
           }
           this.router.navigate('/products/');

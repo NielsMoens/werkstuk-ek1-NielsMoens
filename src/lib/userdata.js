@@ -1,3 +1,9 @@
+/**
+ * Userdata Function:
+ * Get the email from the current users and search
+ * the userdata collection on the firestore database
+ */
+
 import firebase from 'firebase/app';
 
 const userdata = async () => {

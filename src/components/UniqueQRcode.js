@@ -1,5 +1,5 @@
 /**
- * My Home Components
+ * Unique QR code Component
  */
 
 import firebase from 'firebase/app';
@@ -17,13 +17,13 @@ class UniqueQRcode extends Component {
   }
 
   async render() {
-    //  create a home container
+    //  Create a home container
     const homeContainer = document.createElement('div');
     homeContainer.className = 'Activevisitor';
 
     const userInfo = await userdata();
 
-    // load in content with handlebars
+    //  Load in content with handlebars
     homeContainer.insertAdjacentHTML('afterbegin',
       Elements.UniqueQrcode({
         logout: '/businessDashboard',
@@ -34,36 +34,36 @@ class UniqueQRcode extends Component {
       }),
     );
 
+    /**
+     *  Get the Registered business data by checking if the uid (stored in the localstorage)
+     *  has any matches in the userdata collection.
+     */
     const businessData = async () => {
       let busData = {};
       const uid = localStorage.getItem('uid');
       const data = firebase.firestore().collection('BusinessRegistered');
-      console.log(data);
       const snapshot = await data.where('userdata', '==', uid).get();
       if (snapshot.empty) {
         console.log('No matching documents.');
         return null;
       }
       snapshot.forEach((doc) => {
-        console.log('registerChoice', doc.data());
         busData = doc.data();
       });
       return busData;
     };
     const businessInfo = await businessData();
 
-    console.log(btoa(businessInfo.userdata));
-
     const scanner = document.createElement('div');
     scanner.id = 'canvas';
     homeContainer.appendChild(scanner);
-    // if search the uid from localhost in
     // eslint-disable-next-line no-undef
     const qrCode = new QRCodeStyling({
       width: 300,
       height: 300,
-      // super secure shizzle hier
-      data: btoa(businessInfo.userdata), // to base64
+      // super secure shizzle here to base64
+      // (because the scanner would not scan the short businessnames so I made them longer >.< )
+      data: btoa(businessInfo.userdata),
       image: 'https://cdn.discordapp.com/emojis/788540965647679489.png',
       dotsOptions: {
         color: 'black',
