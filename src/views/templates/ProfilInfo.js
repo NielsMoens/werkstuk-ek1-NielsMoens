@@ -1,15 +1,15 @@
 export default `
-<header class="header_small">
-    <ul id="nav">
+<header class="head">
+    <ul class="head__nav">
         <li><a href="{{profilInfo.logout}}"><i class="fas fa-long-arrow-alt-left"></i></a></li>
         <li><a href="/visitorDashboard/profileInfo">{{profilInfo.UserName}} <i class="fas fa-user"></i></a></li>
     </ul>
-    <h1>{{profilInfo.title}}</h1>
-    <p class="subtitle__visitorDash">{{profilInfo.subtitle}}</p>
+    <h1 class="head__title">{{profilInfo.title}}</h1>
+    <p class="head__subtitle">{{profilInfo.subtitle}}</p>
 </header>
 
-<div class="visitordashbaord">
-   <h2> {{profilInfo.info}} </h2>
+<div class="profileInfo">
+   <h2 class="profileInfo__title" > {{profilInfo.info}} </h2>
    <form action="POST">
     <input name="firstname" id="firstname" placeholder="{{profilInfo.firstname}}" type="text">
        <input name="lastname" id="lastname" placeholder="{{profilInfo.lastname}}" type="text">

@@ -1,0 +1,23 @@
+//
+// profileInfo Page Specific
+//
+
+@use '../abstracts/variables'as vars;
+@use '../abstracts/functions'as func;
+@use '../abstracts/mixins'as mix;
+@use '../abstracts/mediamixins'as media;
+
+.activeVisitor {
+   &__title{
+    color: map-get($map: vars.$main-dashboard-colors, $key: mainTextColor);
+    padding-left: 30px;
+    margin-top: 30px;
+  }
+  &__users{
+    color: map-get($map: vars.$main-dashboard-colors, $key: cardTextColor);
+    background-color: map-get($map: vars.$main-dashboard-colors, $key: cardBackgroundColor);
+    margin: 5px 30px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}

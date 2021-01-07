@@ -33,7 +33,7 @@ class HomeComponent extends Component {
     form.appendChild(
       Elements.createHeader({
         textContent: 'HORECONA',
-        classname: 'form__head',
+        classname: 'form__headLogin',
       }),
     );
 

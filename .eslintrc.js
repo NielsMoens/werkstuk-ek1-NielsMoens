@@ -24,5 +24,6 @@ module.exports = {
     'no-continue': 0,
     'prefer-default-export': 0,
     'no-restricted-globals': 0,
+    'no-alert': 0,
   },
 };

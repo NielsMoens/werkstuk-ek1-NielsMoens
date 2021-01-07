@@ -42,7 +42,7 @@ li {
  */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  margin: 0;
 }
 
 /* Grouping content
@@ -71,6 +71,11 @@ pre {
   /* 2 */
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 /* Text-level semantics
    ========================================================================== */
 /**
@@ -79,6 +84,11 @@ pre {
 a {
   background-color: transparent;
   text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
 }
 
 /**
@@ -331,15 +341,15 @@ template {
   display: none;
 }
 
-a {
-  text-decoration: none;
-}
-
 body {
-  background-color: white;
+  background-color: #404040;
 }
 
-input, input[type=number] {
+/**
+* Inputs 
+*/
+input,
+input[type=number] {
   color: white;
   width: 80%;
   padding: 20px 10px;
@@ -349,37 +359,6 @@ input, input[type=number] {
   border-bottom: 1px solid #c9c9c9b0;
   background-color: #404040;
   background-color: none !important;
-}
-
-button {
-  background-color: #474C51;
-  border: 1px solid #C9C9C9;
-  border-radius: 12px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.btn {
-  margin-top: 40px;
-}
-
-button:hover {
-  background-color: #474C51;
-}
-
-.head {
-  margin: 0;
-  padding: 0;
-}
-.head__subtitle {
-  margin: 0;
-  padding: 0;
 }
 
 .text-left {
@@ -438,6 +417,78 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+/**
+* Header
+*/
+.head {
+  margin: 0;
+  padding: 0;
+}
+.head__subtitle {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.head__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px;
+  display: flex;
+  font-size: 20px;
+  background-color: #404040;
+  color: #404040;
+}
+.head__title {
+  color: white;
+  text-align: center;
+}
+
+/**
+* forms
+*/
+/**
+* Buttons
+*/
+button {
+  background-color: #474C51;
+  border: 1px solid #C9C9C9;
+  border-radius: 12px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 40px;
+}
+
+.hide {
+  display: none !important;
+}
+
+button:hover {
+  background-color: #474C51;
+}
+
+.form__userChoice {
+  display: flex;
+  text-align: center;
+  padding: 20px;
+}
+.form__businessNames {
+  margin-top: 20px;
+}
+
+label {
+  color: white;
+}
+
 body #appContainer form {
   padding-bottom: 60px;
   background-color: #404040;
@@ -449,7 +500,7 @@ body #appContainer form {
   align-items: center;
   background-color: #404040;
 }
-body #appContainer form .form__head {
+body #appContainer form .form__headLogin {
   color: white;
   padding-bottom: 40px;
 }
@@ -457,77 +508,124 @@ body #appContainer form .hide {
   display: none !important;
 }
 
-.userChoice {
-  display: flex;
-  text-align: center;
-  padding: 20px;
-}
-
-label {
-  color: white;
-}
-
 body h1, body p, body a, body li {
   color: white;
 }
-
-body {
-  background-color: #404040;
+body .businessDashboard__items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 40px;
+}
+body .businessDashboard__item {
+  text-align: center;
+  align-content: center;
+  width: 35%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+body .businessDashboard__icon {
+  color: #404040;
+  font-size: 16px;
+}
+body .businessDashboard__icon i {
+  font-size: 45px;
+}
+body .businessDashboard__icon .icon__highlighted {
+  color: #CB0048 !important;
+  font-size: 45px;
+}
+body .businessDashboard__icon p {
+  font-weight: 550;
+  color: #404040 !important;
 }
 body .showMap {
-  width: 380px;
+  width: 100%;
   height: 300px;
 }
-body #appContainer .whitespace {
-  padding-top: 20px;
-  background-color: #404040;
-  height: 40px;
-}
-body #appContainer #nav {
+
+.visitorDashboard__items {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   flex-direction: row;
-  padding-right: 40px;
-  font-size: 20px;
-  background-color: #404040;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 40px;
+}
+.visitorDashboard__item {
+  text-align: center;
+  align-content: center;
+  width: 35%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+.visitorDashboard__icon {
   color: #404040;
-}
-body #appContainer h1, body #appContainer .subtitle_visitorDashboard {
-  color: white;
-  text-align: center;
-}
-body #appContainer .hide {
-  display: none !important;
-}
-body #appContainer input {
-  width: 80%;
-  padding: 20px 10px;
-  margin: 8px;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid #c9c9c9b0;
-  background-color: #404040;
-}
-body #appContainer .btn-container {
-  padding-top: 30px;
-}
-body #appContainer .buttons {
-  background-color: #474C51;
-  border: 1px solid #C9C9C9;
-  border-radius: 12px;
-  color: white;
-  padding: 15px 32px;
-  margin: 4000px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
 }
-body #appContainer .buttons:hover {
-  background-color: #474C51;
+.visitorDashboard__icon i {
+  font-size: 45px;
+}
+.visitorDashboard__icon .icon__highlighted {
+  color: #CB0048 !important;
+  font-size: 45px;
+}
+.visitorDashboard__icon p {
+  font-weight: 550;
+  color: #404040 !important;
+}
+
+.showMap {
+  width: 100%;
+  height: 300px;
+}
+
+.profileInfo h2 {
+  color: white;
+  padding-left: 30px;
+  margin-top: 30px;
+}
+
+.activeVisitor__title {
+  color: white;
+  padding-left: 30px;
+  margin-top: 30px;
+}
+.activeVisitor__users {
+  color: #404040;
+  background-color: white;
+  margin: 5px 30px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.unicode__title {
+  color: white;
+  padding-left: 30px;
+  margin-top: 30px;
+}
+
+#canvas {
+  display: flex;
+  justify-content: center;
+}
+
+.checkinScanner__title {
+  color: white;
+  padding-left: 30px;
+  margin-top: 30px;
+  font-size: 22px;
+}
+
+#canvas {
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=main.css.map */

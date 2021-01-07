@@ -49,7 +49,7 @@ class ExtraData extends Component {
     extrainfoContainer.appendChild(
       Elements.createHeader({
         textContent: 'HORECONA',
-        classname: 'head',
+        classname: 'form__head',
       }),
     );
     const subtitle = document.createElement('p');
@@ -102,12 +102,13 @@ class ExtraData extends Component {
       //  create a dropdown with all the business names fetched form the stadgent API
       const dropdown = document.createElement('select');
       dropdown.setAttribute('name', 'businessName');
+      dropdown.className = 'form__businessNames';
       if (!this.model.businessNames) {
         extrainfoContainer.className = 'hide';
         await this.loadBusinessNames();
         this.businessLoaded = true;
       } else {
-        extrainfoContainer.className = 'nothingtoseehere';
+        extrainfoContainer.className = 'nothingtoseehere form';
         this.model.businessNames.forEach((element) => {
           const option = document.createElement('option');
           option.setAttribute('value', element);

@@ -23,7 +23,7 @@ class VisitorDashboard extends Component {
   async render() {
     //  create a home container
     const homeContainer = document.createElement('div');
-    homeContainer.className = 'visitorDashboard';
+    homeContainer.className = 'visitorDashboard-container';
 
     const userInfo = await userdata();
     console.log(userInfo);

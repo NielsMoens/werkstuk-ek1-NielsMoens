@@ -14,6 +14,7 @@ const QrScanner = async () => new Promise((resolve) => {
       // Reader-div element id
       // eslint-disable-next-line no-undef
       const html5QrCode = new Html5Qrcode('reader');
+      // eslint-disable-next-line no-unused-vars
       const aspectRatio = window.screen.height / window.screen.width;
 
       // Start the scanner
@@ -22,7 +23,7 @@ const QrScanner = async () => new Promise((resolve) => {
           // higher fps = faster scanning
           fps: 10,
           // container width / container height.
-          aspectRatio,
+          aspectRatio: 9 / 21,
         },
         (qrCodeMessage) => {
           // Stop the scanner, then handle response, return message

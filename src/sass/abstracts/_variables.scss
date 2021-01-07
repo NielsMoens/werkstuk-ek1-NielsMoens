@@ -21,8 +21,13 @@ $button-colors:(
   mainTextColor: white,
   );
   
-
-
+$main-dashboard-colors:(
+  highlightedIcons: #CB0048,
+  mainTextColor: white,
+  cardTextColor: #404040,
+  cardBackgroundColor: white,
+  );
+  
 $text-font: 'Open Sans',
 sans-serif;
 $logo-font: 'Lobster',

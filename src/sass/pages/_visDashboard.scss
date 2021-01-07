@@ -1,5 +1,5 @@
 //
-// Home Page Specific
+// visitorDashboard Page Specific
 //
 
 @use '../abstracts/variables'as vars;
@@ -8,72 +8,44 @@
 @use '../abstracts/mediamixins'as media;
 
 
-body {
-  .showMap {
-    width: 380px;
-    height: 300px;
+.visitorDashboard {
+  &__items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 40px;
   }
 
-  background-color:#404040;
+  &__item {
+    text-align: center;
+    align-content: center;
+    width: 35%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+    background-color: map-get($map: vars.$main-dashboard-colors, $key: cardBackgroundColor);
+    border-radius: 10px;
+  }
 
-  #appContainer {
-    .whitespace {
-      padding-top: 20px;
-      background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
-      height: 40px;
+  &__icon {
+    color:map-get($map: vars.$main-dashboard-colors, $key: cardTextColor);
+    font-size: 16px;
+    i{
+      font-size: 45px;
     }
-    #nav{
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-direction: row;
-      padding-right: 40px;
-      font-size: 20px;
-      background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
-      color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+    .icon__highlighted{
+      color: map-get($map: vars.$main-dashboard-colors, $key: highlightedIcons) !important;
+      font-size: 45px;
     }
-
-    h1, .subtitle_visitorDashboard {
-      color: map-get($map: vars.$mainLogin-colors, $key: headColor);
-      text-align: center;
-    }
-
-    .hide {
-      display: none !important;
-    }
-
-    input {
-      width: 80%;
-      padding: 20px 10px;
-      margin: 8px;
-      box-sizing: border-box;
-      border: none;
-      border-bottom: 1px solid map-get($map: vars.$mainLogin-colors, $key: formLine);
-      background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
-    }
-
-    .btn-container {
-      padding-top: 30px;
-    }
-
-    .buttons {
-      background-color: map-get($map: vars.$button-colors, $key: buttonbackgroundColor);
-      border: 1px solid map-get($map: vars.$button-colors, $key: border);
-      border-radius: 12px;
-      color: white;
-      padding: 15px 32px;
-      margin: 4000px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-
-    }
-
-    .buttons:hover {
-      background-color: map-get($map: vars.$button-colors, $key: btn-hover);
+    p{
+      font-weight: 550;
+      color: map-get($map: vars.$main-dashboard-colors, $key: cardTextColor) !important;
     }
   }
+}
+
+.showMap {
+  width: 100%;
+  height: 300px;
 }

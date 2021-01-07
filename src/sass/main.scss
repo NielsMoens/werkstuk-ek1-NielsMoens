@@ -14,16 +14,18 @@
 
 // 4. Layout
 @use './layout/header';
-@use './layout/footer';
 
 // 5. Components
 @use './components/forms';
 @use './components/buttons';
 
 // 6. Page-specific
-@use './pages/home';
 @use './pages/register';
 @use './pages/login';
 @use './pages/busDashboard';
 @use './pages/visDashboard';
+@use './pages/profilIinfoPage';
+@use './pages/activeVisitors';
+@use './pages/qrCode';
+@use './pages/checkinScanner';
 

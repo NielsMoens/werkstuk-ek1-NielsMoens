@@ -10,3 +10,32 @@
 
 @use 'sass:map';
 
+/**
+* Header
+*/
+
+.head {
+    margin: 0;
+    padding: 0;
+  
+    &__subtitle {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+  
+    &__nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 30px;
+      display: flex;
+      font-size: 20px;
+      background-color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+      color: map-get($map: vars.$mainLogin-colors, $key: backgroundColor);
+    }
+    &__title {
+      color: map-get($map: vars.$mainLogin-colors, $key: headColor);
+      text-align: center;
+    } 
+  }

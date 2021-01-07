@@ -1,5 +1,5 @@
 //
-// Home Page Specific
+// login Page Specific
 //
 
 @use '../abstracts/variables'as vars;
@@ -7,3 +7,29 @@
 @use '../abstracts/mixins'as mix;
 @use '../abstracts/mediamixins'as media;
 
+body {
+  #appContainer {
+    form {
+      padding-bottom: 60px;
+      background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
+      height: 100vh;
+      width: 100;
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: map-get($map: vars.$mainLogin-colors, $key: formbackgroundColor);
+
+      .form__headLogin {
+        color: map-get($map: vars.$mainLogin-colors, $key: headColor);
+        padding-bottom: 40px;
+      }
+
+      .hide {
+        display: none !important;
+      }
+    }
+  }
+
+
+}

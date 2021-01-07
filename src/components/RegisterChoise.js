@@ -25,7 +25,7 @@ class RegisterComponent extends Component {
     registerContainer.appendChild(
       Elements.createHeader({
         textContent: 'HORECONA',
-        classname: 'header',
+        classname: 'form__head',
       }),
     );
 
@@ -52,7 +52,7 @@ class RegisterComponent extends Component {
 
     // create radio buttons for user choice
     const radioParent = document.createElement('section');
-    radioParent.className = 'userChoice';
+    radioParent.className = 'form__userChoice';
     const visitor = document.createElement('div');
     visitor.className = 'userChoice__visitorContainer';
     const business = document.createElement('div');

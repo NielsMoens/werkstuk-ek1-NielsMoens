@@ -1,0 +1,16 @@
+//
+// profileInfo Page Specific
+//
+
+@use '../abstracts/variables'as vars;
+@use '../abstracts/functions'as func;
+@use '../abstracts/mixins'as mix;
+@use '../abstracts/mediamixins'as media;
+
+.profileInfo {
+  h2 {
+    color: map-get($map: vars.$mainLogin-colors, $key: headColor);
+    padding-left: 30px;
+    margin-top: 30px;
+  }
+}

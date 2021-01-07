@@ -1,44 +1,33 @@
-//
-// Buttons
-//
-
-// @use '../abstracts/variables'as vars;
+/**
+* Buttons
+*/
 
 
-// .btn{
-//   border-top: 1px solid map-get($map: vars.$button-color, $key: border-btncolor);
-//   border-left: 1px solid map-get($map: vars.$button-color, $key: border-btncolor);
-//   border-right: 1px solid map-get($map: vars.$button-color, $key: border-btncolor);
-//   padding: 15px;
-//   font-size: 16px;
-//   font-weight: 900;
-//   color: black;
-//   a{
-//     text-decoration: none;
-//     color: map-get($map: vars.$button-color, $key: button-text-color);
-//   } 
+@use '../abstracts/variables'as vars;
+@use 'sass:map';
 
-//   &:hover {
-//     background-color: map-get($map: vars.$button-color, $key: border-btncolor);
-//     color: map-get($map: vars.$button-color, $key: text-hover-color);
-    
-//   }
-// }
-
-// .footer__btn {
-//   border-top: 1px solid map-get($map: vars.$button-color, $key: border-btncolor);
-//   border-left: 1px solid map-get($map: vars.$button-color, $key: border-btncolor);
-//   border-right: 1px solid map-get($map: vars.$button-color, $key: border-btncolor);
-//   padding: 15px;
-//   font-size: 16px;
-//   font-weight: 900;
-//   a{
-//     text-decoration: none;
-//   } 
-
-//   &:hover {
-//     background-color: map-get($map: vars.$button-color, $key: border-btncolor);
-//     color: map-get($map: vars.$button-color, $key: text-hover-color);
-    
-//   }
-// }
+button {
+    background-color: map-get($map: vars.$button-colors, $key: buttonbackgroundColor);
+    border: 1px solid map-get($map: vars.$button-colors, $key: border);
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .btn {
+    margin-top: 40px;
+  }
+  
+  .hide {
+    display: none !important;
+  }
+  
+  button:hover {
+    background-color: map-get($map: vars.$button-colors, $key: btn-hover);
+  }

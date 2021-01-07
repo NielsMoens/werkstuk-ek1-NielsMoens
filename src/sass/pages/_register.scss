@@ -1,5 +1,5 @@
 //
-// Home Page Specific
+// Register Page Specific
 //
 
 @use '../abstracts/variables'as vars;
@@ -7,12 +7,17 @@
 @use '../abstracts/mixins'as mix;
 @use '../abstracts/mediamixins'as media;
 
-
-.userChoice {
-  display: flex;
-  text-align: center;
-  padding: 20px;
+.form {
+  &__userChoice {
+    display: flex;
+    text-align: center;
+    padding: 20px;
+  }
+  &__businessNames{
+    margin-top: 20px;
+  }
 }
+
 
 label {
   color: map-get($map: vars.$mainLogin-colors, $key: mainTextColor);
