@@ -6,4 +6,4 @@ This was created by Niels Moens
 
 ## Hosting
 Because I have problems with the netfily build, I'm hosting the app via ngrok.  
-Link to application: http://4d16bf2ea08e.ngrok.io 
+Link to application:  http://9e8834e89e37.ngrok.io
